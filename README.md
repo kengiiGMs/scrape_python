@@ -1,8 +1,11 @@
 # Criar o ambiente virtual
-python -m venv venv
+```python -m venv venv```
 
 # Ativar no Windows
-venv\Scripts\activate
+```venv\Scripts\activate```
 
-# Ativar no Linux/Mac
-source venv/bin/activate
+# Baixar bibliotecas
+```pip install -r requirements.txt```
+
+# Gerar arquivo de bibliotecas
+```pip freeze > requirements.txt```
