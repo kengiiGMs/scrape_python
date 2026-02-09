@@ -10,10 +10,10 @@ def scrape_markdown(url):
     """
     try:
         # Faz a requisição HTTP
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'} #Passa script no header para evitar o bloqueio da requisição
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'} #Passa script no header para evitar o bloqueio da requisição (tipo uma mascara que diz que é um navegador firefox windows SO 64 e não um script python)
         html = requests.get(url, headers=headers)
         html.raise_for_status() # Verifica o status, se dar erro ja cai exception
-        
+        #print(html.text)         # (HTML puro)
         # Parse do HTML
         html_organizado = BeautifulSoup(html.content, 'html.parser') # Transforma o html bagunçado em algo organizado
    
