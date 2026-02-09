@@ -12,11 +12,20 @@ def scrape_markdown(url):
         # Inicia o Playwright não o navegador (with = fecha tudo automaticamente) 
         with sync_playwright() as p:
 
-            browser = p.chromium.launch(headless=True,args=['--disable-blink-features=AutomationControlled']) # Inicia o navegador em modo headless (true = sem interface visual, só no back)
+            browser = p.chromium.launch(headless=False,args=['--disable-blink-features=AutomationControlled']) # Inicia o navegador em modo headless (true = sem interface visual, só no back) args é algo para falar que não é um robo
 
             page = browser.new_page()# Criando uma página nova
 
             page.goto(url, wait_until='networkidle')  #.goto = Navega até a página e wait_util=networkindle,  wait_until = até quando esperar para ter a pagina como carregada? (networkindle = até o JavaScript/Ajax ter carregado, load = padrão, domcontentload = css e html)
+
+            page.click('#onetrust-accept-btn-handler')
+
+            #REMOVER A MODAL
+            page.evaluate('''
+                const modal = document.querySelector('#onetrust-consent-sdk');
+                if (modal) modal.remove();
+                document.body.style.overflow = 'auto';
+            ''')
 
             html_content = page.content() # Pega o HTML completo já renderizado com JavaScript
 
