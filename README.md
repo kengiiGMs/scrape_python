@@ -17,3 +17,8 @@ pip install -r requirements.txt
 ```bash
 pip freeze > requirements.txt
 ```
+
+# Pegar fluxo do robo usando o playwright
+```bash
+playwright codegen https://www.site.com
+```
