@@ -1,11 +1,19 @@
 # Criar o ambiente virtual
-```python -m venv venv```
+```bash
+python -m venv venv
+```
 
 # Ativar no Windows
-```venv\Scripts\activate```
+```bash
+venv\Scripts\activate
+```
 
 # Baixar bibliotecas
-```pip install -r requirements.txt```
+```bash
+pip install -r requirements.txt
+```
 
 # Gerar arquivo de bibliotecas
-```pip freeze > requirements.txt```
+```bash
+pip freeze > requirements.txt
+```
