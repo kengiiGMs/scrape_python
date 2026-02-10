@@ -107,13 +107,13 @@ def processar(url):
         
         if not status or html is None:
             print("⚠️ Falha playwright")
-            return False, None
-    else:
-        print("✅ Sucesso com raspagem!")
+            return False, None, None
+    
+    print("✅ Sucesso com raspagem!")
 
-        print("🔄️ Tentando capturar informações SOBRE a página")
+    print("🔄️ Tentando capturar informações SOBRE a página")
 
-        informacoes_da_pagina = extrair_informacoes_estruturadas(html)
+    informacoes_da_pagina = extrair_informacoes_estruturadas(html)
     
     return True, html, informacoes_da_pagina
 
