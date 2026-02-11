@@ -1,0 +1,35 @@
+# Node.js
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+
+# Variáveis de ambiente sensíveis
+.env
+langchain/.env
+
+# Outputs e arquivos gerados
+outputs/
+langchain/uploads/*.md
+scrape_python/resultados/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
