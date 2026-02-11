@@ -2,6 +2,7 @@ from modos.scrape_unico import processar_scrape_unico
 from modos.scrape_completo import processar_scrape_completo
 from ferramentas.converter import html_para_markdown
 from ferramentas.salvamento import salvar_arquivo_local
+from ferramentas.nome_arquivo import gerar_nome_arquivo_da_url
 
 if __name__ == "__main__":
     print("=== Web Scraper para Markdown ===\n")
@@ -15,7 +16,7 @@ if __name__ == "__main__":
     while modo != 9:
         match modo:
             case 1:
-                status, html_processado, informacoes_da_pagina = processar_scrape_unico(url)
+                status, html_processado, informacoes_da_pagina, nome_arquivo_gerado = processar_scrape_unico(url)
             
                 if status and html_processado:
                     print("\n=== RESULTADO EM MARKDOWN ===\n")
@@ -28,8 +29,8 @@ if __name__ == "__main__":
                     # Salvar em arquivo (opcional)
                     salvar_arquivo = input("\nDeseja salvar em arquivo? (s/n): ")
                     if salvar_arquivo.lower() == 's':
-                        salvar_arquivo_local(conteudo=markdown, nome_arquivo=None)
-                        salvar_arquivo_local(conteudo=informacoes_da_pagina, nome_arquivo="informacoes")
+                        salvar_arquivo_local(conteudo=markdown, nome_arquivo=nome_arquivo_gerado)
+                        salvar_arquivo_local(conteudo=informacoes_da_pagina, nome_arquivo=f"{nome_arquivo_gerado}_informacoes")
                     break
                 else:
                     print("❌ Erro não foi possível raspar a página!")
@@ -40,16 +41,17 @@ if __name__ == "__main__":
                     markdown = [] 
                     
                     for paginas_html in html_processado:
-                        markdown.append({"link": paginas_html['link'], "pagina": html_para_markdown(paginas_html['html']), "informacoes": paginas_html['extrair_informacoes_estruturadas']})
-
+                        markdown.append({"link": paginas_html['link'], "pagina": html_para_markdown(paginas_html['html']), "informacoes": paginas_html['extrair_informacoes_estruturadas'], "nome": paginas_html['nome']})
                     # Salvar em arquivo (opcional)
                     salvar_arquivo = input("\nDeseja salvar os arquivo? (s/n): ")
                     if salvar_arquivo.lower() == 's':
                         for arquivos in markdown:
                             if arquivos['pagina'] != None:
-                                titulo = arquivos['informacoes']['metadados'].get('title')
-                                salvar_arquivo_local(conteudo=arquivos['pagina'], nome_arquivo=titulo)
-                                salvar_arquivo_local(conteudo=arquivos['informacoes'], nome_arquivo=f"{titulo}_informacoes")
+                                salvar_arquivo_local(conteudo=arquivos['pagina'], nome_arquivo=arquivos['nome'])
+                                salvar_arquivo_local(
+                                    conteudo=arquivos['informacoes'], 
+                                    nome_arquivo=f"{arquivos['nome']}_informacoes"
+                                )
                     break
                 else:
                     print("❌ Erro não foi possível raspar a página!")

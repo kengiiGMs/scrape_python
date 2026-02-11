@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent Fac - Upload e Chat</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 16px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 16px;
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #475569;
+      background: #0b1222;
+      color: #e2e8f0;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    button {
+      border: 0;
+      background: #3b82f6;
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .row {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .muted {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+    .ok {
+      color: #22c55e;
+    }
+    .err {
+      color: #f87171;
+    }
+    #chatLog {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 8px;
+      background: #0b1222;
+      margin-bottom: 10px;
+    }
+    .msg {
+      margin: 8px 0;
+      padding: 8px 10px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+    .msg.user {
+      background: #1d4ed8;
+    }
+    .msg.bot {
+      background: #0f766e;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="card">
+      <h1>Agent Fac - Upload Markdown + Ingestão</h1>
+      <p class="muted">O <code>ID_Conta</code> será o nome do arquivo Markdown (sem extensão).</p>
+
+      <label for="markdownFile">Arquivo Markdown (.md)</label>
+      <input id="markdownFile" type="file" accept=".md" />
+
+      <label for="idContaInput">ID_Conta</label>
+      <input id="idContaInput" type="text" placeholder="Será preenchido pelo nome do arquivo" readonly />
+
+      <div class="row">
+        <input id="clearCheckbox" type="checkbox" />
+        <label for="clearCheckbox" style="margin:0;">Limpar tabela antes da ingestão</label>
+      </div>
+
+      <div class="row">
+        <button id="processButton">Processar Ingestão</button>
+        <span id="ingestStatus" class="muted">Aguardando arquivo...</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Chat (Webhook N8N)</h2>
+      <p class="muted">Payload enviado: <code>{ "message": "...", "ID_Conta": "..." }</code></p>
+      <div id="chatLog"></div>
+      <textarea id="chatInput" rows="3" placeholder="Digite sua pergunta..."></textarea>
+      <div class="row">
+        <button id="sendChatButton">Enviar mensagem</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const markdownFileInput = document.getElementById('markdownFile');
+    const idContaInput = document.getElementById('idContaInput');
+    const clearCheckbox = document.getElementById('clearCheckbox');
+    const processButton = document.getElementById('processButton');
+    const ingestStatus = document.getElementById('ingestStatus');
+    const chatLog = document.getElementById('chatLog');
+    const chatInput = document.getElementById('chatInput');
+    const sendChatButton = document.getElementById('sendChatButton');
+
+    function deriveIdConta(filename) {
+      if (!filename) return '';
+      const stem = filename.replace(/\.[^/.]+$/, '');
+      return stem.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_-]/g, '');
+    }
+
+    function appendMessage(kind, text) {
+      const div = document.createElement('div');
+      div.className = `msg ${kind}`;
+      div.textContent = text;
+      chatLog.appendChild(div);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    markdownFileInput.addEventListener('change', () => {
+      const file = markdownFileInput.files && markdownFileInput.files[0];
+      const idConta = file ? deriveIdConta(file.name) : '';
+      idContaInput.value = idConta;
+      ingestStatus.textContent = file ? `Arquivo selecionado: ${file.name}` : 'Aguardando arquivo...';
+      ingestStatus.className = 'muted';
+    });
+
+    processButton.addEventListener('click', async () => {
+      const file = markdownFileInput.files && markdownFileInput.files[0];
+      if (!file) {
+        ingestStatus.textContent = 'Selecione um arquivo .md primeiro.';
+        ingestStatus.className = 'err';
+        return;
+      }
+
+      processButton.disabled = true;
+      ingestStatus.textContent = 'Processando ingestão...';
+      ingestStatus.className = 'muted';
+
+      try {
+        const formData = new FormData();
+        formData.append('markdownFile', file);
+        formData.append('clear', String(clearCheckbox.checked));
+        formData.append('table', 'marketing_rag');
+
+        const response = await fetch('/api/ingest-markdown', {
+          method: 'POST',
+          body: formData
+        });
+
+        const data = await response.json();
+        if (!response.ok || !data.success) {
+          throw new Error(data.error || 'Falha na ingestão');
+        }
+
+        idContaInput.value = data.data.ID_Conta;
+        ingestStatus.textContent = `Ingestão concluída. ID_Conta: ${data.data.ID_Conta}`;
+        ingestStatus.className = 'ok';
+      } catch (error) {
+        ingestStatus.textContent = `Erro: ${error.message}`;
+        ingestStatus.className = 'err';
+      } finally {
+        processButton.disabled = false;
+      }
+    });
+
+    sendChatButton.addEventListener('click', async () => {
+      const message = chatInput.value.trim();
+      const ID_Conta = idContaInput.value.trim();
+
+      if (!ID_Conta) {
+        appendMessage('bot', 'Defina o ID_Conta (selecionando e processando um arquivo).');
+        return;
+      }
+
+      if (!message) return;
+
+      appendMessage('user', message);
+      chatInput.value = '';
+      sendChatButton.disabled = true;
+
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message, ID_Conta })
+        });
+
+        const data = await response.json();
+        if (!response.ok || !data.success) {
+          throw new Error(data.error || 'Erro no chat');
+        }
+
+        appendMessage('bot', data.data.reply || 'Sem resposta textual do webhook.');
+      } catch (error) {
+        appendMessage('bot', `Erro ao enviar mensagem: ${error.message}`);
+      } finally {
+        sendChatButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
