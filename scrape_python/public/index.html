@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agent FAQ - Chat Inteligente</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0a0e1a;
+      --bg-secondary: #1a1f35;
+      --bg-card: #232942;
+      --border: #2d3448;
+      --text-primary: #e8eaf0;
+      --text-secondary: #9ca3af;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --success: #10b981;
+      --error: #ef4444;
+      --user-msg: #1e40af;
+      --bot-msg: #065f46;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 16px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.1);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon {
+      font-size: 24px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    input[type="text"],
+    input[type="url"],
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: var(--bg-primary);
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    button {
+      border: none;
+      background: var(--accent);
+      color: white;
+      border-radius: 10px;
+      padding: 12px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    button:hover:not(:disabled) {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    button.secondary {
+      background: #4b5563;
+    }
+
+    button.secondary:hover:not(:disabled) {
+      background: #374151;
+    }
+
+    .row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-badge.idle {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+    }
+
+    .status-badge.processing {
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      animation: pulse 2s infinite;
+    }
+
+    .status-badge.success {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--success);
+    }
+
+    .status-badge.error {
+      background: rgba(239, 68, 68, 0.2);
+      color: var(--error);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #chatContainer {
+      grid-column: 1 / -1;
+    }
+
+    #chatLog {
+      height: 450px;
+      overflow-y: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      background: var(--bg-secondary);
+      margin-bottom: 16px;
+      scroll-behavior: smooth;
+    }
+
+    #chatLog::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    #chatLog::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    #chatLog::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    .msg {
+      margin: 12px 0;
+      padding: 12px 16px;
+      border-radius: 12px;
+      max-width: 70%;
+      word-wrap: break-word;
+      animation: fadeIn 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .msg.user {
+      background: var(--user-msg);
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .msg.bot {
+      background: var(--bot-msg);
+      margin-right: auto;
+    }
+
+    .msg.system {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      text-align: center;
+      margin: 12px auto;
+      max-width: 80%;
+      color: var(--text-secondary);
+    }
+
+    .info-banner {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-top: 12px;
+      font-size: 13px;
+      color: #60a5fa;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 24px 0;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .option-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .option-card {
+      background: var(--bg-secondary);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .option-card:hover {
+      border-color: var(--accent);
+      background: var(--bg-card);
+    }
+
+    .option-card.selected {
+      border-color: var(--accent);
+      background: rgba(59, 130, 246, 0.1);
+    }
+
+    .option-card .icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    .option-card .title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .option-card .desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    #pipelinesList {
+      max-height: 200px;
+      overflow-y: auto;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+
+    .pipeline-item {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pipeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .pipeline-item:hover {
+      background: var(--bg-card);
+    }
+
+    .pipeline-item.selected {
+      background: rgba(59, 130, 246, 0.15);
+      border-left: 3px solid var(--accent);
+    }
+
+    .pipeline-url {
+      font-size: 14px;
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .pipeline-count {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-secondary);
+    }
+
+    .empty-state .icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🤖 Agent FAQ</h1>
+      <p class="subtitle">Sistema inteligente de FAQ com IA</p>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">🌐</span>
+          <span>Escolha a origem dos dados</span>
+        </div>
+
+        <div class="option-cards">
+          <div class="option-card selected" id="optionNew">
+            <div class="icon">✨</div>
+            <div class="title">Novo Site</div>
+            <div class="desc">Processar nova URL</div>
+          </div>
+          <div class="option-card" id="optionExisting">
+            <div class="icon">📚</div>
+            <div class="title">Já Processado</div>
+            <div class="desc">Usar base existente</div>
+          </div>
+        </div>
+
+        <div id="newUrlSection">
+          <div class="form-group">
+            <label for="urlInput">URL do site</label>
+            <input 
+              id="urlInput" 
+              type="url" 
+              placeholder="https://www.exemplo.com.br"
+            />
+          </div>
+
+          <button id="pipelineButton" class="row">
+            <span>🚀</span>
+            <span>Processar Site</span>
+          </button>
+          
+          <div id="pipelineStatus" class="status-badge idle" style="margin-top: 12px;">
+            Aguardando URL
+          </div>
+        </div>
+
+        <div id="existingSection" class="hidden">
+          <div class="form-group">
+            <label>Sites já processados</label>
+            <div id="pipelinesContainer">
+              <div id="pipelinesList"></div>
+              <button id="loadPipelinesBtn" class="secondary row" style="width: 100%;">
+                <span>🔄</span>
+                <span>Carregar lista</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">💡</span>
+          <span>Como funciona</span>
+        </div>
+        <div style="font-size: 14px; color: var(--text-secondary); line-height: 1.8;">
+          <p style="margin-bottom: 12px;">
+            <strong style="color: var(--text-primary);">1. Processamento:</strong><br/>
+            Digite a URL de um site e processaremos todo o conteúdo automaticamente
+          </p>
+          <p style="margin-bottom: 12px;">
+            <strong style="color: var(--text-primary);">2. Base de conhecimento:</strong><br/>
+            O sistema extrairá informações e criará uma base inteligente de perguntas e respostas
+          </p>
+          <p>
+            <strong style="color: var(--text-primary);">3. Chat:</strong><br/>
+            Converse sobre o site processado - o agente responderá com base no conteúdo real
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="chatContainer" style="display: none;">
+      <div class="card-title">
+        <span class="icon">💬</span>
+        <span>Chat</span>
+      </div>
+
+      <div class="info-banner" id="chatInfoBanner">
+        <span>ℹ️</span>
+        <span id="chatInfoText">Processando...</span>
+      </div>
+
+      <div id="chatLog">
+        <div class="msg system">
+          Processe um site ou selecione uma base existente para começar
+        </div>
+      </div>
+
+      <div class="form-group">
+        <textarea 
+          id="chatInput" 
+          rows="3" 
+          placeholder="Faça sua pergunta sobre o site..."
+          disabled
+        ></textarea>
+      </div>
+
+      <div class="row">
+        <button id="sendChatButton" disabled class="row">
+          <span>📤</span>
+          <span>Enviar</span>
+        </button>
+        <button id="clearChatButton" class="secondary row">
+          <span>🗑️</span>
+          <span>Limpar</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = '';
+    
+    let currentIdConta = null;
+    let currentMode = 'new';
+    let availablePipelines = [];
+
+    const optionNew = document.getElementById('optionNew');
+    const optionExisting = document.getElementById('optionExisting');
+    const newUrlSection = document.getElementById('newUrlSection');
+    const existingSection = document.getElementById('existingSection');
+    const urlInput = document.getElementById('urlInput');
+    const pipelineButton = document.getElementById('pipelineButton');
+    const pipelineStatus = document.getElementById('pipelineStatus');
+    const loadPipelinesBtn = document.getElementById('loadPipelinesBtn');
+    const pipelinesList = document.getElementById('pipelinesList');
+    const chatContainer = document.getElementById('chatContainer');
+    const chatLog = document.getElementById('chatLog');
+    const chatInput = document.getElementById('chatInput');
+    const sendChatButton = document.getElementById('sendChatButton');
+    const clearChatButton = document.getElementById('clearChatButton');
+    const chatInfoBanner = document.getElementById('chatInfoBanner');
+    const chatInfoText = document.getElementById('chatInfoText');
+
+    function setStatus(text, type) {
+      pipelineStatus.textContent = text;
+      pipelineStatus.className = `status-badge ${type}`;
+      if (type === 'processing') {
+        pipelineStatus.innerHTML = `<span class="spinner"></span><span>${text}</span>`;
+      }
+    }
+
+    function switchMode(mode) {
+      currentMode = mode;
+      
+      optionNew.classList.toggle('selected', mode === 'new');
+      optionExisting.classList.toggle('selected', mode === 'existing');
+      
+      newUrlSection.classList.toggle('hidden', mode !== 'new');
+      existingSection.classList.toggle('hidden', mode !== 'existing');
+    }
+
+    function appendChatMessage(type, text) {
+      const div = document.createElement('div');
+      div.className = `msg ${type}`;
+      div.textContent = text;
+      chatLog.appendChild(div);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function enableChat(idConta, sourceInfo) {
+      currentIdConta = idConta;
+      chatContainer.style.display = 'block';
+      chatInput.disabled = false;
+      sendChatButton.disabled = false;
+      
+      chatInfoText.textContent = `Base ativa: ${sourceInfo}`;
+      
+      chatLog.innerHTML = '';
+      appendChatMessage('system', `✅ Base carregada. Faça suas perguntas sobre o conteúdo!`);
+      
+      chatInput.focus();
+    }
+
+    async function loadPipelines() {
+      loadPipelinesBtn.disabled = true;
+      loadPipelinesBtn.innerHTML = '<span class="spinner"></span><span>Carregando...</span>';
+      
+      try {
+        const response = await fetch(`${API_BASE}/api/pipelines`);
+        const data = await response.json();
+        
+        if (!data.success || !data.data || data.data.length === 0) {
+          pipelinesList.innerHTML = `
+            <div class="empty-state">
+              <div class="icon">📭</div>
+              <div>Nenhuma base processada ainda</div>
+            </div>
+          `;
+          return;
+        }
+        
+        availablePipelines = data.data;
+        
+        pipelinesList.innerHTML = availablePipelines.map((p, idx) => `
+          <div class="pipeline-item" data-idx="${idx}">
+            <div>
+              <div class="pipeline-url">${p.url_inferido}</div>
+              <div class="pipeline-count">${p.total_faqs} FAQs disponíveis</div>
+            </div>
+          </div>
+        `).join('');
+        
+        document.querySelectorAll('.pipeline-item').forEach(item => {
+          item.addEventListener('click', () => {
+            const idx = parseInt(item.dataset.idx);
+            const pipeline = availablePipelines[idx];
+            
+            document.querySelectorAll('.pipeline-item').forEach(i => i.classList.remove('selected'));
+            item.classList.add('selected');
+            
+            enableChat(pipeline.ID_Conta, pipeline.url_inferido);
+          });
+        });
+        
+      } catch (error) {
+        pipelinesList.innerHTML = `
+          <div class="empty-state">
+            <div class="icon">❌</div>
+            <div>Erro ao carregar bases: ${error.message}</div>
+          </div>
+        `;
+      } finally {
+        loadPipelinesBtn.disabled = false;
+        loadPipelinesBtn.innerHTML = '<span>🔄</span><span>Atualizar lista</span>';
+      }
+    }
+
+    optionNew.addEventListener('click', () => switchMode('new'));
+    optionExisting.addEventListener('click', () => switchMode('existing'));
+    loadPipelinesBtn.addEventListener('click', loadPipelines);
+
+    pipelineButton.addEventListener('click', async () => {
+      const url = urlInput.value.trim();
+      
+      if (!url) {
+        setStatus('Digite uma URL válida', 'error');
+        return;
+      }
+
+      pipelineButton.disabled = true;
+      setStatus('Processando site...', 'processing');
+
+      try {
+        const response = await fetch(`${API_BASE}/api/pipeline`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            url: url,
+            table: 'marketing_rag',
+            clear: false
+          })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.detail || data.message || 'Erro no pipeline');
+        }
+
+        setStatus('✅ Site processado com sucesso!', 'success');
+        
+        const idConta = data.data.ID_Conta;
+        const urlDisplay = new URL(url).hostname;
+        
+        enableChat(idConta, urlDisplay);
+
+      } catch (error) {
+        setStatus(`❌ Erro: ${error.message}`, 'error');
+        console.error('Erro no pipeline:', error);
+      } finally {
+        pipelineButton.disabled = false;
+      }
+    });
+
+    async function sendMessage() {
+      const message = chatInput.value.trim();
+
+      if (!message) return;
+
+      if (!currentIdConta) {
+        appendChatMessage('system', '⚠️ Selecione uma base de conhecimento primeiro');
+        return;
+      }
+
+      appendChatMessage('user', message);
+      chatInput.value = '';
+      sendChatButton.disabled = true;
+
+      const tempMsg = document.createElement('div');
+      tempMsg.className = 'msg bot';
+      tempMsg.innerHTML = '<span class="spinner"></span> Pensando...';
+      chatLog.appendChild(tempMsg);
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+      try {
+        const response = await fetch(`${API_BASE}/api/chat`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: message,
+            ID_Conta: currentIdConta
+          })
+        });
+
+        const data = await response.json();
+
+        tempMsg.remove();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.detail || 'Erro no chat');
+        }
+
+        const reply = data.data.reply || 'Sem resposta do agente';
+        appendChatMessage('bot', reply);
+
+      } catch (error) {
+        tempMsg.remove();
+        appendChatMessage('system', `❌ Erro: ${error.message}`);
+        console.error('Erro no chat:', error);
+      } finally {
+        sendChatButton.disabled = false;
+        chatInput.focus();
+      }
+    }
+
+    sendChatButton.addEventListener('click', sendMessage);
+
+    chatInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    clearChatButton.addEventListener('click', () => {
+      chatLog.innerHTML = '';
+      if (currentIdConta) {
+        appendChatMessage('system', '🗑️ Histórico limpo. Continue conversando!');
+      } else {
+        appendChatMessage('system', 'Processe um site ou selecione uma base existente para começar');
+      }
+    });
+  </script>
+</body>
+</html>
