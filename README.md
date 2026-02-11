@@ -22,3 +22,11 @@ pip freeze > requirements.txt
 ```bash
 playwright codegen https://www.site.com
 ```
+
+
+
+transformar em api
+
+https://www.quaestum.com.br/
+
+remover espaços do scrappe
