@@ -22,22 +22,22 @@ def scrape_request(url):
 
         html = resposta.text
         
-        # ✅ Verifica tamanho E conteúdo real
+        # Verifica tamanho E conteudo real
         if len(html) < 500:
             return False, None
             
-        # ✅ Detecta se tem muito pouco texto (sinal de SPA)
+        # Detecta se tem muito pouco texto (sinal de SPA)
         soup = BeautifulSoup(html, 'html.parser')
         texto = soup.get_text(strip=True)
         
         if len(texto) < 200:  # Muito pouco texto = precisa JS
-            print("⚠️  Pouco conteúdo detectado (provável SPA)")
+            print("[AVISO] Pouco conteudo detectado (provavel SPA)")
             return False, None
         
-        return True, html  # ✅ Retorna string, não bytes
+        return True, html
         
     except Exception as e:
-        print(f"❌ Request falhou: {e}")
+        print(f"[ERRO] Request falhou: {e}")
         return False, None
 
 
@@ -53,10 +53,10 @@ def scrape_playwright(url):
             ) 
             pagina = navegador.new_page()
             
-            # ✅ Espera carregar completamente
+            # Espera carregar completamente
             pagina.goto(url, wait_until='networkidle', timeout=30000)
             
-            # ✅ Aguarda mais um pouco para JS executar
+            # Aguarda mais um pouco para JS executar
             pagina.wait_for_timeout(2000)
             
             conteudo_html = pagina.content()
@@ -64,7 +64,7 @@ def scrape_playwright(url):
         return True, conteudo_html
 
     except Exception as e:
-        print(f"❌ Playwright falhou: {e}")
+        print(f"[ERRO] Playwright falhou: {e}")
         return False, None
 
 
@@ -113,7 +113,7 @@ def salvar_markdown_nomeado(markdown, url, pasta_destino=None):
     with open(caminho, 'w', encoding='utf-8') as f:
         f.write(markdown)
     
-    print(f"✅ Salvo em '{caminho}'")
+    print(f"[OK] Salvo em '{caminho}'")
     return caminho, nome_arquivo
 
 
@@ -128,22 +128,22 @@ def salvar_markdown(markdown):
 
     with open(arquivo, 'w', encoding='utf-8') as f:
         f.write(markdown)
-    print(f"✅ Salvo em '{arquivo}'")
+    print(f"[OK] Salvo em '{arquivo}'")
 
 
 def processar(url):
-    print("🔍 Tentando com Requests (rápido)...")
+    print("[1] Tentando com Requests (rapido)...")
     status, html = scrape_request(url)
 
     if not status or html is None:
-        print("⚠️  Request insuficiente, usando Playwright...")
+        print("[AVISO] Request insuficiente, usando Playwright...")
         status, html = scrape_playwright(url)
         
         if not status or html is None:
-            print("❌ Falhou playwright")
+            print("[ERRO] Falhou playwright")
             return False, None
     else:
-        print("✅ Sucesso com Requests!")
+        print("[OK] Sucesso com Requests!")
     
     return True, html
 
@@ -166,4 +166,4 @@ if __name__ == "__main__":
         if salvar.lower() == 's':
             salvar_markdown(markdown)
     else:
-        print("❌ Erro: Não foi possível raspar a página!")
+        print("[ERRO] Nao foi possivel raspar a pagina!")

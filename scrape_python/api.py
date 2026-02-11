@@ -164,7 +164,7 @@ async def scrape_endpoint(request: ScrapeRequest):
     """
     try:
         url_str = str(request.url)
-        print(f"🔍 Scraping URL: {url_str}")
+        print(f"[SCRAPE] URL: {url_str}")
         
         status, html = processar(url_str)
         
@@ -195,14 +195,14 @@ async def pipeline_endpoint(request: PipelineRequest):
     try:
         url_str = str(request.url)
         print(f"\n{'='*60}")
-        print(f"🚀 INICIANDO PIPELINE COMPLETO")
+        print(f"INICIANDO PIPELINE COMPLETO")
         print(f"{'='*60}")
         print(f"URL: {url_str}")
         print(f"Tabela: {request.table}")
         print(f"Clear: {request.clear}")
         
         # 1. Scraping
-        print("\n[1/3] 🔍 Executando scraping...")
+        print("\n[1/3] Executando scraping...")
         status, html = processar(url_str)
         
         if not status or not html:
@@ -211,10 +211,10 @@ async def pipeline_endpoint(request: PipelineRequest):
                 detail="Falha no scraping da página"
             )
         
-        print("✅ Scraping concluído")
+        print("[OK] Scraping concluido")
         
         # 2. Converter e salvar markdown
-        print("\n[2/3] 📝 Convertendo para markdown e salvando...")
+        print("\n[2/3] Convertendo para markdown e salvando...")
         markdown = html_para_markdown(html)
         
         caminho_md, id_conta = salvar_markdown_nomeado(
@@ -223,18 +223,18 @@ async def pipeline_endpoint(request: PipelineRequest):
             pasta_destino=str(UPLOAD_DIR)
         )
         
-        print(f"✅ Markdown salvo: {caminho_md}")
-        print(f"✅ ID_Conta derivado: {id_conta}")
+        print(f"[OK] Markdown salvo: {caminho_md}")
+        print(f"[OK] ID_Conta derivado: {id_conta}")
         
         # 3. Executar ingestão FAQ
-        print("\n[3/3] 🤖 Executando ingestão FAQ...")
+        print("\n[3/3] Executando ingestao FAQ...")
         ingest_result = executar_ingestao(
             input_path=caminho_md,
             table=request.table,
             clear=request.clear
         )
         
-        print("✅ Ingestão concluída")
+        print("[OK] Ingestao concluida")
         print(f"{'='*60}\n")
         
         return PipelineResponse(
@@ -254,7 +254,7 @@ async def pipeline_endpoint(request: PipelineRequest):
     except HTTPException:
         raise
     except Exception as e:
-        print(f"❌ Erro no pipeline: {e}")
+        print(f"[ERRO] Pipeline: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
@@ -269,8 +269,8 @@ async def chat_endpoint(request: ChatRequest):
             "ID_Conta": request.ID_Conta
         }
         
-        print(f"\n💬 Chat: {request.message[:50]}...")
-        print(f"📋 ID_Conta: {request.ID_Conta}")
+        print(f"\n[CHAT] Msg: {request.message[:50]}...")
+        print(f"[CHAT] ID_Conta: {request.ID_Conta}")
         
         async with httpx.AsyncClient(timeout=30.0) as client:
             response = await client.post(
