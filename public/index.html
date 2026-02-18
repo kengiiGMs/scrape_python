@@ -3,241 +3,945 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agent Fac - Upload e Chat</title>
+  <title>Agente Conversacional</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root {
-      color-scheme: light dark;
-      font-family: Arial, sans-serif;
+      --bg-primary: #0f172a;
+      --bg-card: #1e293b;
+      --bg-input: #0b1222;
+      --border: #334155;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --green: #22c55e;
+      --red: #f87171;
+      --bot-bg: #1e293b;
+      --user-bg: #1d4ed8;
     }
+
     body {
-      margin: 0;
-      padding: 24px;
-      background: #0f172a;
-      color: #e2e8f0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      display: grid;
-      gap: 16px;
-    }
-    .card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 16px;
-    }
-    h1, h2 {
-      margin-top: 0;
-    }
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-    input[type="text"],
-    input[type="file"],
-    textarea {
+
+    .app {
       width: 100%;
-      box-sizing: border-box;
-      border: 1px solid #475569;
-      background: #0b1222;
-      color: #e2e8f0;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 10px;
+      max-width: 720px;
+      height: 95vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
     }
-    button {
-      border: 0;
-      background: #3b82f6;
-      color: #fff;
-      border-radius: 8px;
-      padding: 10px 14px;
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+      flex-shrink: 0;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .header-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .header-info h1 {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .header-site {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
       cursor: pointer;
-      font-weight: bold;
+      transition: color 0.2s;
     }
-    button:disabled {
-      opacity: 0.6;
+
+    .header-site:hover {
+      color: var(--text);
+    }
+
+    .header-site .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    .header-site .dot.inactive {
+      background: var(--text-muted);
+    }
+
+    .header-site .edit-icon {
+      font-size: 11px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .header-site:hover .edit-icon {
+      opacity: 1;
+    }
+
+    .btn-header {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      border-radius: 8px;
+      padding: 8px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-header:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: var(--text-muted);
+    }
+
+    /* ── Tabs ── */
+    .tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s, box-shadow 0.2s;
+    }
+
+    .tab.active {
+      color: var(--accent);
+      box-shadow: inset 0 -2px 0 var(--accent);
+    }
+
+    .tab:hover:not(.active) {
+      color: var(--text);
+    }
+
+    /* ── Tab panels ── */
+    .tab-panel {
+      display: none;
+      flex: 1;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .tab-panel.active {
+      display: flex;
+    }
+
+    /* ── Chat ── */
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 3px;
+    }
+
+    .msg-row {
+      display: flex;
+      gap: 10px;
+      max-width: 85%;
+    }
+
+    .msg-row.user {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .msg-row.bot {
+      align-self: flex-start;
+    }
+
+    .msg-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .msg-row.bot .msg-avatar {
+      background: var(--accent);
+    }
+
+    .msg-row.user .msg-avatar {
+      background: #6366f1;
+    }
+
+    .msg-bubble {
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 14px;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+
+    .msg-row.user .msg-bubble {
+      background: var(--user-bg);
+      border-bottom-right-radius: 4px;
+    }
+
+    .msg-row.bot .msg-bubble {
+      background: var(--bot-bg);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 4px;
+    }
+
+    /* ── Markdown rendered inside bot messages ── */
+    .msg-bubble strong { font-weight: 700; }
+    .msg-bubble em { font-style: italic; }
+
+    .msg-bubble p {
+      margin: 0 0 8px 0;
+    }
+
+    .msg-bubble p:last-child {
+      margin-bottom: 0;
+    }
+
+    .msg-bubble ul, .msg-bubble ol {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+
+    .msg-bubble li {
+      margin-bottom: 4px;
+    }
+
+    .msg-bubble a {
+      color: #60a5fa;
+      text-decoration: underline;
+    }
+
+    .msg-bubble code {
+      background: rgba(255,255,255,0.1);
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    /* Typing indicator */
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 4px 0;
+    }
+
+    .typing-indicator span {
+      width: 7px;
+      height: 7px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      animation: typing 1.2s infinite;
+    }
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+      0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+      30% { opacity: 1; transform: translateY(-4px); }
+    }
+
+    /* ── Chat input ── */
+    .chat-input-area {
+      padding: 12px 20px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      flex-shrink: 0;
+    }
+
+    .chat-input-area textarea {
+      flex: 1;
+      resize: none;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      max-height: 100px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .chat-input-area textarea:focus {
+      border-color: var(--accent);
+    }
+
+    .btn-send {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+      font-size: 18px;
+    }
+
+    .btn-send:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-send:disabled {
+      opacity: 0.5;
       cursor: not-allowed;
     }
-    .row {
+
+    /* ── Upload panel ── */
+    .upload-panel {
+      padding: 24px 20px;
+      overflow-y: auto;
+    }
+
+    .upload-panel label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .upload-panel input[type="text"],
+    .upload-panel input[type="file"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      font-size: 14px;
+      font-family: inherit;
+    }
+
+    .upload-panel .row {
       display: flex;
       gap: 8px;
       align-items: center;
-      flex-wrap: wrap;
+      margin-bottom: 12px;
     }
-    .muted {
-      color: #94a3b8;
+
+    .btn-primary {
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      padding: 10px 18px;
+      cursor: pointer;
+      font-weight: 600;
       font-size: 14px;
+      transition: background 0.2s;
     }
-    .ok {
-      color: #22c55e;
+
+    .btn-primary:hover { background: var(--accent-hover); }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .status-text {
+      font-size: 13px;
+      color: var(--text-muted);
     }
-    .err {
-      color: #f87171;
+
+    .status-text.ok { color: var(--green); }
+    .status-text.err { color: var(--red); }
+
+    /* ── Modal ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      justify-content: center;
+      align-items: center;
     }
-    #chatLog {
-      height: 300px;
-      overflow-y: auto;
-      border: 1px solid #334155;
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      width: 90%;
+      max-width: 440px;
+      animation: modalIn 0.2s ease-out;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(20px) scale(0.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .modal h2 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .modal p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .modal label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .modal input[type="text"] {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--bg-input);
+      color: var(--text);
       border-radius: 8px;
-      padding: 8px;
-      background: #0b1222;
-      margin-bottom: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
     }
-    .msg {
-      margin: 8px 0;
-      padding: 8px 10px;
+
+    .modal input[type="text"]:focus {
+      border-color: var(--accent);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .btn-cancel {
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
       border-radius: 8px;
-      white-space: pre-wrap;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.2s;
     }
-    .msg.user {
-      background: #1d4ed8;
+
+    .btn-cancel:hover {
+      background: rgba(255,255,255,0.05);
     }
-    .msg.bot {
-      background: #0f766e;
+
+    .btn-confirm {
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+
+    .btn-confirm:hover {
+      background: var(--accent-hover);
+    }
+
+    /* ── Welcome message ── */
+    .welcome {
+      text-align: center;
+      padding: 32px 20px;
+      color: var(--text-muted);
+    }
+
+    .welcome .icon {
+      font-size: 40px;
+      margin-bottom: 12px;
+    }
+
+    .welcome h3 {
+      color: var(--text);
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .welcome p {
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <section class="card">
-      <h1>Agent Fac - Upload Markdown + Ingestão</h1>
-      <p class="muted">O <code>ID_Conta</code> será o nome do arquivo Markdown (sem extensão).</p>
+
+<div class="app">
+  <!-- Header -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-avatar">🤖</div>
+      <div class="header-info">
+        <h1>Agente Conversacional</h1>
+        <div class="header-site" id="siteIndicator" title="Clique para trocar o site">
+          <span class="dot inactive" id="siteDot"></span>
+          <span id="siteLabel">Nenhum site selecionado</span>
+          <span class="edit-icon">✏️</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn-header" id="btnChangeSite">🔄 Trocar Site</button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" data-tab="chat">💬 Chat</button>
+    <button class="tab" data-tab="upload">📤 Upload &amp; Ingestão</button>
+  </div>
+
+  <!-- Chat Panel -->
+  <div class="tab-panel active" id="panel-chat">
+    <div class="chat-messages" id="chatLog">
+      <div class="welcome">
+        <div class="icon">💬</div>
+        <h3>Bem-vindo ao Agente Conversacional</h3>
+        <p>Selecione um site clicando em <strong>"Trocar Site"</strong> e comece a conversar.</p>
+      </div>
+    </div>
+
+    <div class="chat-input-area">
+      <textarea id="chatInput" rows="1" placeholder="Pergunte qualquer coisa sobre o site..."></textarea>
+      <button class="btn-send" id="sendChatButton" title="Enviar">➤</button>
+    </div>
+  </div>
+
+  <!-- Upload Panel -->
+  <div class="tab-panel" id="panel-upload">
+    <div class="upload-panel">
+      <h2 style="margin-bottom: 4px;">Upload Markdown + Ingestão</h2>
+      <p class="status-text" style="margin-bottom: 16px;">O ID_Conta será derivado do nome do arquivo.</p>
 
       <label for="markdownFile">Arquivo Markdown (.md)</label>
       <input id="markdownFile" type="file" accept=".md" />
 
       <label for="idContaInput">ID_Conta</label>
-      <input id="idContaInput" type="text" placeholder="Será preenchido pelo nome do arquivo" readonly />
+      <input id="idContaInput" type="text" placeholder="Preenchido automaticamente pelo arquivo" readonly />
 
       <div class="row">
         <input id="clearCheckbox" type="checkbox" />
-        <label for="clearCheckbox" style="margin:0;">Limpar tabela antes da ingestão</label>
+        <label for="clearCheckbox" style="margin:0; font-weight:normal;">Limpar tabela antes da ingestão</label>
       </div>
 
       <div class="row">
-        <button id="processButton">Processar Ingestão</button>
-        <span id="ingestStatus" class="muted">Aguardando arquivo...</span>
+        <button class="btn-primary" id="processButton">Processar Ingestão</button>
+        <span id="ingestStatus" class="status-text">Aguardando arquivo...</span>
       </div>
-    </section>
+    </div>
+  </div>
+</div>
 
-    <section class="card">
-      <h2>Chat (Webhook N8N)</h2>
-      <p class="muted">Payload enviado: <code>{ "message": "...", "ID_Conta": "..." }</code></p>
-      <div id="chatLog"></div>
-      <textarea id="chatInput" rows="3" placeholder="Digite sua pergunta..."></textarea>
-      <div class="row">
-        <button id="sendChatButton">Enviar mensagem</button>
-      </div>
-    </section>
-  </main>
+<!-- Modal: Trocar Site -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h2>Trocar Site</h2>
+    <p>Informe o ID_Conta do site que deseja consultar. É o identificador usado na ingestão (ex: <code>buenopolis_web</code>).</p>
 
-  <script>
-    const markdownFileInput = document.getElementById('markdownFile');
-    const idContaInput = document.getElementById('idContaInput');
-    const clearCheckbox = document.getElementById('clearCheckbox');
-    const processButton = document.getElementById('processButton');
-    const ingestStatus = document.getElementById('ingestStatus');
-    const chatLog = document.getElementById('chatLog');
-    const chatInput = document.getElementById('chatInput');
-    const sendChatButton = document.getElementById('sendChatButton');
+    <label for="modalIdConta">ID_Conta</label>
+    <input type="text" id="modalIdConta" placeholder="Ex: buenopolis_web_mg_gov_br" />
 
-    function deriveIdConta(filename) {
-      if (!filename) return '';
-      const stem = filename.replace(/\.[^/.]+$/, '');
-      return stem.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_-]/g, '');
+    <div class="modal-actions">
+      <button class="btn-cancel" id="btnModalCancel">Cancelar</button>
+      <button class="btn-confirm" id="btnModalConfirm">Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── State ──
+  let currentIdConta = '';
+
+  // ── DOM refs ──
+  const chatLog = document.getElementById('chatLog');
+  const chatInput = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('sendChatButton');
+  const siteLabel = document.getElementById('siteLabel');
+  const siteDot = document.getElementById('siteDot');
+  const siteIndicator = document.getElementById('siteIndicator');
+  const btnChangeSite = document.getElementById('btnChangeSite');
+  const modalOverlay = document.getElementById('modalOverlay');
+  const modalIdConta = document.getElementById('modalIdConta');
+  const btnModalCancel = document.getElementById('btnModalCancel');
+  const btnModalConfirm = document.getElementById('btnModalConfirm');
+  const markdownFileInput = document.getElementById('markdownFile');
+  const idContaInput = document.getElementById('idContaInput');
+  const clearCheckbox = document.getElementById('clearCheckbox');
+  const processButton = document.getElementById('processButton');
+  const ingestStatus = document.getElementById('ingestStatus');
+
+  // ── Tabs ──
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ── Modal ──
+  function openModal() {
+    modalIdConta.value = currentIdConta;
+    modalOverlay.classList.add('open');
+    setTimeout(() => modalIdConta.focus(), 100);
+  }
+
+  function closeModal() {
+    modalOverlay.classList.remove('open');
+  }
+
+  function confirmSite() {
+    const val = modalIdConta.value.trim();
+    if (!val) return;
+    currentIdConta = val;
+    siteLabel.textContent = val;
+    siteDot.classList.remove('inactive');
+    idContaInput.value = val;
+    closeModal();
+
+    // Remove welcome message if present
+    const welcome = chatLog.querySelector('.welcome');
+    if (welcome) welcome.remove();
+  }
+
+  btnChangeSite.addEventListener('click', openModal);
+  siteIndicator.addEventListener('click', openModal);
+  btnModalCancel.addEventListener('click', closeModal);
+  btnModalConfirm.addEventListener('click', confirmSite);
+
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  modalIdConta.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') confirmSite();
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ── Markdown parser (lightweight) ──
+  function renderMarkdown(text) {
+    if (!text) return '';
+
+    let html = text
+      // Escape HTML
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Code blocks (```)
+    html = html.replace(/```[\s\S]*?```/g, (match) => {
+      const code = match.slice(3, -3).trim();
+      return '<code>' + code + '</code>';
+    });
+
+    // Inline code
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Bold + Italic
+    html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>');
+    // Bold
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    // Italic
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+    // Links [text](url)
+    html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+
+    // Split into lines for block-level processing
+    const lines = html.split('\n');
+    let result = '';
+    let inList = false;
+    let listType = '';
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const unorderedMatch = line.match(/^\s*[\*\-]\s+(.+)/);
+      const orderedMatch = line.match(/^\s*\d+\.\s+(.+)/);
+
+      if (unorderedMatch) {
+        if (!inList || listType !== 'ul') {
+          if (inList) result += listType === 'ol' ? '</ol>' : '</ul>';
+          result += '<ul>';
+          inList = true;
+          listType = 'ul';
+        }
+        result += '<li>' + unorderedMatch[1] + '</li>';
+      } else if (orderedMatch) {
+        if (!inList || listType !== 'ol') {
+          if (inList) result += listType === 'ol' ? '</ol>' : '</ul>';
+          result += '<ol>';
+          inList = true;
+          listType = 'ol';
+        }
+        result += '<li>' + orderedMatch[1] + '</li>';
+      } else {
+        if (inList) {
+          result += listType === 'ol' ? '</ol>' : '</ul>';
+          inList = false;
+          listType = '';
+        }
+        if (line.trim() === '') {
+          result += '<br>';
+        } else {
+          result += '<p>' + line + '</p>';
+        }
+      }
     }
 
-    function appendMessage(kind, text) {
-      const div = document.createElement('div');
-      div.className = `msg ${kind}`;
-      div.textContent = text;
-      chatLog.appendChild(div);
-      chatLog.scrollTop = chatLog.scrollHeight;
+    if (inList) {
+      result += listType === 'ol' ? '</ol>' : '</ul>';
     }
 
-    markdownFileInput.addEventListener('change', () => {
-      const file = markdownFileInput.files && markdownFileInput.files[0];
-      const idConta = file ? deriveIdConta(file.name) : '';
-      idContaInput.value = idConta;
-      ingestStatus.textContent = file ? `Arquivo selecionado: ${file.name}` : 'Aguardando arquivo...';
-      ingestStatus.className = 'muted';
-    });
+    // Clean up excessive breaks
+    result = result.replace(/(<br>\s*){3,}/g, '<br><br>');
 
-    processButton.addEventListener('click', async () => {
-      const file = markdownFileInput.files && markdownFileInput.files[0];
-      if (!file) {
-        ingestStatus.textContent = 'Selecione um arquivo .md primeiro.';
-        ingestStatus.className = 'err';
-        return;
+    return result;
+  }
+
+  // ── Chat messages ──
+  function appendMessage(kind, text) {
+    const welcome = chatLog.querySelector('.welcome');
+    if (welcome) welcome.remove();
+
+    const row = document.createElement('div');
+    row.className = 'msg-row ' + kind;
+
+    const avatar = document.createElement('div');
+    avatar.className = 'msg-avatar';
+    avatar.textContent = kind === 'user' ? '👤' : '🤖';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'msg-bubble';
+
+    if (kind === 'bot') {
+      bubble.innerHTML = renderMarkdown(text);
+    } else {
+      bubble.textContent = text;
+    }
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+    chatLog.appendChild(row);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function showTyping() {
+    const row = document.createElement('div');
+    row.className = 'msg-row bot';
+    row.id = 'typingRow';
+
+    const avatar = document.createElement('div');
+    avatar.className = 'msg-avatar';
+    avatar.textContent = '🤖';
+
+    const bubble = document.createElement('div');
+    bubble.className = 'msg-bubble';
+    bubble.innerHTML = '<div class="typing-indicator"><span></span><span></span><span></span></div>';
+
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+    chatLog.appendChild(row);
+    chatLog.scrollTop = chatLog.scrollHeight;
+  }
+
+  function removeTyping() {
+    const el = document.getElementById('typingRow');
+    if (el) el.remove();
+  }
+
+  // ── Send chat ──
+  async function sendMessage() {
+    const message = chatInput.value.trim();
+    if (!message) return;
+
+    if (!currentIdConta) {
+      openModal();
+      return;
+    }
+
+    appendMessage('user', message);
+    chatInput.value = '';
+    chatInput.style.height = 'auto';
+    sendBtn.disabled = true;
+    showTyping();
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message, ID_Conta: currentIdConta })
+      });
+
+      const data = await response.json();
+      removeTyping();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Erro no chat');
       }
 
-      processButton.disabled = true;
-      ingestStatus.textContent = 'Processando ingestão...';
-      ingestStatus.className = 'muted';
+      appendMessage('bot', data.data.reply || 'Sem resposta.');
+    } catch (error) {
+      removeTyping();
+      appendMessage('bot', 'Erro ao enviar mensagem: ' + error.message);
+    } finally {
+      sendBtn.disabled = false;
+      chatInput.focus();
+    }
+  }
 
-      try {
-        const formData = new FormData();
-        formData.append('markdownFile', file);
-        formData.append('clear', String(clearCheckbox.checked));
-        formData.append('table', 'marketing_rag');
+  sendBtn.addEventListener('click', sendMessage);
 
-        const response = await fetch('/api/ingest-markdown', {
-          method: 'POST',
-          body: formData
-        });
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
 
-        const data = await response.json();
-        if (!response.ok || !data.success) {
-          throw new Error(data.error || 'Falha na ingestão');
-        }
+  // Auto-resize textarea
+  chatInput.addEventListener('input', () => {
+    chatInput.style.height = 'auto';
+    chatInput.style.height = Math.min(chatInput.scrollHeight, 100) + 'px';
+  });
 
-        idContaInput.value = data.data.ID_Conta;
-        ingestStatus.textContent = `Ingestão concluída. ID_Conta: ${data.data.ID_Conta}`;
-        ingestStatus.className = 'ok';
-      } catch (error) {
-        ingestStatus.textContent = `Erro: ${error.message}`;
-        ingestStatus.className = 'err';
-      } finally {
-        processButton.disabled = false;
+  // ── Upload / Ingest ──
+  function deriveIdConta(filename) {
+    if (!filename) return '';
+    const stem = filename.replace(/\.[^/.]+$/, '');
+    return stem.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_-]/g, '');
+  }
+
+  markdownFileInput.addEventListener('change', () => {
+    const file = markdownFileInput.files && markdownFileInput.files[0];
+    const id = file ? deriveIdConta(file.name) : '';
+    idContaInput.value = id;
+    ingestStatus.textContent = file ? 'Arquivo: ' + file.name : 'Aguardando arquivo...';
+    ingestStatus.className = 'status-text';
+  });
+
+  processButton.addEventListener('click', async () => {
+    const file = markdownFileInput.files && markdownFileInput.files[0];
+    if (!file) {
+      ingestStatus.textContent = 'Selecione um arquivo .md primeiro.';
+      ingestStatus.className = 'status-text err';
+      return;
+    }
+
+    processButton.disabled = true;
+    ingestStatus.textContent = 'Processando ingestão...';
+    ingestStatus.className = 'status-text';
+
+    try {
+      const formData = new FormData();
+      formData.append('markdownFile', file);
+      formData.append('clear', String(clearCheckbox.checked));
+      formData.append('table', 'marketing_rag');
+
+      const response = await fetch('/api/ingest-markdown', {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+      if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Falha na ingestão');
       }
-    });
 
-    sendChatButton.addEventListener('click', async () => {
-      const message = chatInput.value.trim();
-      const ID_Conta = idContaInput.value.trim();
+      const newId = data.data.ID_Conta;
+      idContaInput.value = newId;
+      ingestStatus.textContent = 'Ingestão concluída! ID_Conta: ' + newId;
+      ingestStatus.className = 'status-text ok';
 
-      if (!ID_Conta) {
-        appendMessage('bot', 'Defina o ID_Conta (selecionando e processando um arquivo).');
-        return;
-      }
+      currentIdConta = newId;
+      siteLabel.textContent = newId;
+      siteDot.classList.remove('inactive');
+    } catch (error) {
+      ingestStatus.textContent = 'Erro: ' + error.message;
+      ingestStatus.className = 'status-text err';
+    } finally {
+      processButton.disabled = false;
+    }
+  });
+</script>
 
-      if (!message) return;
-
-      appendMessage('user', message);
-      chatInput.value = '';
-      sendChatButton.disabled = true;
-
-      try {
-        const response = await fetch('/api/chat', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message, ID_Conta })
-        });
-
-        const data = await response.json();
-        if (!response.ok || !data.success) {
-          throw new Error(data.error || 'Erro no chat');
-        }
-
-        appendMessage('bot', data.data.reply || 'Sem resposta textual do webhook.');
-      } catch (error) {
-        appendMessage('bot', `Erro ao enviar mensagem: ${error.message}`);
-      } finally {
-        sendChatButton.disabled = false;
-      }
-    });
-  </script>
 </body>
 </html>

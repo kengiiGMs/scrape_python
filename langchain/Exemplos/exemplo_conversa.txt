@@ -1,0 +1,11 @@
+Sobre oq vc pode falar
+
+Eu sou um modelo de linguagem grande, treinado pelo Google. Posso falar sobre uma vasta gama de tópicos e responder suas perguntas. Se precisar de informações específicas de um banco de dados, posso usar a ferramenta `Supabase_Vector_Store` para buscar dados relevantes.
+
+Sobre oq vc pode falar sobre buenopolis
+
+Posso fornecer informações sobre Buenópolis com base nos seguintes tópicos: * **História da cidade:** [https://www.buenopolis.mg.gov.br/historia-da-cidade/](https://www.buenopolis.mg.gov.br/historia-da-cidade/) * **Informações gerais do município:** [https://www.buenopolis.mg.gov.br/informacoes-gerais/](https://www.buenopolis.mg.gov.br/informacoes-gerais/) * **Dados turísticos:** [https://www.buenopolis.mg.gov.br/dados-turisticos/](https://www.buenopolis.mg.gov.br/dados-turistico/) * **Inventário Cultural:** [https://www.buenopolis.mg.gov.br/wp-content/uploads/2022/12/BUE-EX-2024_DIVULGACAO.pdf](https://www.buenopolis.mg.gov.br/wp-content/uploads/2022/12/BUE-EX-2024_DIVULGACAO.pdf) (documento em PDF)
+
+Me de informações sobre o turismo
+
+Informações turísticas sobre Buenópolis podem ser encontradas na seção "Município" do site oficial, acessando o link: [https://www.buenopolis.mg.gov.br/dados-turisticos/](https://www.buenopolis.mg.gov.br/dados-turistico/).
