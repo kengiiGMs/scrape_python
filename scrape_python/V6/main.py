@@ -3,6 +3,8 @@ from modos.scrape_completo import processar_scrape_completo
 from ferramentas.converter import html_para_markdown
 from ferramentas.salvamento import salvar_arquivo_local
 from ferramentas.nome_arquivo import gerar_nome_arquivo_da_url
+from ferramentas.limpeza import limpar_markdown
+import json
 
 if __name__ == "__main__":
     print("=== Web Scraper para Markdown ===\n")
@@ -39,19 +41,29 @@ if __name__ == "__main__":
                 print("\n=== SCRAPPE DAS PÁGINAS FINALIZADO ===\n")
                 if status and html_processado:
                     markdown = [] 
-                    
+
                     for paginas_html in html_processado:
-                        markdown.append({"link": paginas_html['link'], "pagina": html_para_markdown(paginas_html['html']), "informacoes": paginas_html['extrair_informacoes_estruturadas'], "nome": paginas_html['nome']})
+                        if paginas_html['status'] == True:
+                            conteudo_bruto = html_para_markdown(paginas_html['html'])
+                            conteudo_pagina = limpar_markdown(conteudo_bruto)
+                            markdown.append({
+                                "link": paginas_html['link'], 
+                                "conteudo": conteudo_pagina, 
+                            })
+                    
                     # Salvar em arquivo (opcional)
                     salvar_arquivo = input("\nDeseja salvar os arquivo? (s/n): ")
                     if salvar_arquivo.lower() == 's':
-                        for arquivos in markdown:
-                            if arquivos['pagina'] != None:
-                                salvar_arquivo_local(conteudo=arquivos['pagina'], nome_arquivo=arquivos['nome'])
-                                salvar_arquivo_local(
-                                    conteudo=arquivos['informacoes'], 
-                                    nome_arquivo=f"{arquivos['nome']}_informacoes"
-                                )
+                        conteudo_completo = ""
+                        for arquivo in markdown:
+                            conteudo_completo += f"\n{'='*40}\n"
+                            conteudo_completo += f"TÍTULO: {arquivo['link']['texto']}\n"
+                            conteudo_completo += f"{'='*40}\n\n"
+                            conteudo_completo += "--- CONTEÚDO PRINCIPAL IDENTIFICADO ---\n\n"
+                            conteudo_completo += str(arquivo['conteudo']) + "\n\n"
+       
+                        nome_arquivo_unico = f"{gerar_nome_arquivo_da_url(url)}_relatorio_completo"
+                        salvar_arquivo_local(conteudo=conteudo_completo, nome_arquivo=nome_arquivo_unico)
                     break
                 else:
                     print("❌ Erro não foi possível raspar a página!")
