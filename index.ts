@@ -1,5 +1,6 @@
 // index.ts - API Server
 import express, { Request, Response } from 'express';
+import cors from 'cors';
 import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 import multer from 'multer';
@@ -10,18 +11,82 @@ import { scraperService } from './scraper.service.js';
 import { MarkdownGenerator } from './markdown-generator.js';
 import { JobData } from './types.js';
 
+// ─── Terminal Spinner ────────────────────────────────────────────────────────
+
+const SPINNER_FRAMES = ['|', '/', '-', '\\'];
+
+function createSpinner(label: string) {
+    let frame = 0;
+    const start = Date.now();
+    const isTTY = process.stdout.isTTY;
+
+    const interval = setInterval(() => {
+        const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+        const icon = SPINNER_FRAMES[frame % SPINNER_FRAMES.length];
+        frame++;
+        if (isTTY) {
+            process.stdout.write(`\r  ${icon} ${label} (${elapsed}s)   `);
+        }
+    }, 100);
+
+    return {
+        stop(success: boolean, msg?: string) {
+            clearInterval(interval);
+            const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+            const icon = success ? '✅' : '❌';
+            const line = msg ?? label;
+            if (isTTY) {
+                process.stdout.write(`\r  ${icon} ${line} (${elapsed}s)` + ' '.repeat(10) + '\n');
+            } else {
+                console.log(`  ${icon} ${line} (${elapsed}s)`);
+            }
+        }
+    };
+}
+
+async function withSpinner<T>(label: string, fn: () => Promise<T>): Promise<T> {
+    const spinner = createSpinner(label);
+    try {
+        const result = await fn();
+        spinner.stop(true);
+        return result;
+    } catch (err) {
+        spinner.stop(false, `ERRO em: ${label}`);
+        throw err;
+    }
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 const app = express();
 const PORT = process.env.PORT || 3000;
+const FRONT_ORIGIN = process.env.FRONT_ORIGIN || 'http://localhost:8000';
 const WEBHOOK_URL = 'https://auto-serv-teste.grupoquaestum.com/webhook/marketing_conversacional';
 const ROOT_DIR = process.cwd();
-const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
 const LANGCHAIN_DIR = path.join(ROOT_DIR, 'langchain');
 const UPLOAD_DIR = path.join(LANGCHAIN_DIR, 'uploads');
 const INGEST_SCRIPT_PATH = path.join(LANGCHAIN_DIR, 'Agente_FAQ.py');
 const PYTHON_BIN = process.env.PYTHON_BIN || 'python';
 
+function loadEnvFile(filePath: string): Record<string, string> {
+    if (!fs.existsSync(filePath)) return {};
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const env: Record<string, string> = {};
+    for (const line of content.split('\n')) {
+        const trimmed = line.trim();
+        if (!trimmed || trimmed.startsWith('#')) continue;
+        const eqIdx = trimmed.indexOf('=');
+        if (eqIdx === -1) continue;
+        env[trimmed.slice(0, eqIdx).trim()] = trimmed.slice(eqIdx + 1).trim();
+    }
+    return env;
+}
+
+const langchainEnv = loadEnvFile(path.join(LANGCHAIN_DIR, '.env'));
+const SUPABASE_URL = langchainEnv.SUPABASE_URL || '';
+const SUPABASE_SERVICE_KEY = langchainEnv.SUPABASE_SERVICE_KEY || '';
+
+app.use(cors({ origin: '*' }));
 app.use(express.json());
-app.use(express.static(PUBLIC_DIR));
 
 // 📦 Fila em memória (Para produção, considere Redis/BullMQ)
 const jobQueue = new Map<string, JobData>();
@@ -89,10 +154,6 @@ const scrapeSchema = z.object({
         timeout: z.number().min(5000).max(120000).optional(),
         waitUntil: z.enum(['load', 'domcontentloaded', 'networkidle0', 'networkidle2']).optional(),
     }).optional(),
-});
-
-app.get('/', (_req, res) => {
-    res.sendFile(path.join(PUBLIC_DIR, 'index.html'));
 });
 
 /**
@@ -300,17 +361,30 @@ function runIngestion(inputPath: string, table: string, clear: boolean): Promise
 
         const child = spawn(PYTHON_BIN, args, {
             cwd: ROOT_DIR,
-            env: process.env
+            env: { ...process.env, PYTHONUNBUFFERED: '1' }  // força flush imediato no Python
         });
 
         let stdout = '';
         let stderr = '';
+        let lineBuffer = '';
 
-        child.stdout.on('data', (chunk) => {
-            stdout += chunk.toString();
+        child.stdout.on('data', (chunk: Buffer) => {
+            const text = chunk.toString();
+            stdout += text;
+            // Imprime cada linha em tempo real com prefixo visual
+            lineBuffer += text;
+            const lines = lineBuffer.split('\n');
+            lineBuffer = lines.pop() ?? '';
+            for (const ln of lines) {
+                if (ln.trim()) console.log(`  │ ${ln}`);
+            }
         });
 
-        child.stderr.on('data', (chunk) => {
+        child.stdout.on('end', () => {
+            if (lineBuffer.trim()) console.log(`  │ ${lineBuffer}`);
+        });
+
+        child.stderr.on('data', (chunk: Buffer) => {
             stderr += chunk.toString();
         });
 
@@ -323,11 +397,141 @@ function runIngestion(inputPath: string, table: string, clear: boolean): Promise
                 resolve({ stdout, stderr });
                 return;
             }
-
             reject(new Error(`Ingestão falhou com código ${code}. Detalhes: ${stderr || stdout}`));
         });
     });
 }
+
+/**
+ * GET /api/pipelines - Lista pipelines do Supabase
+ */
+app.get('/api/pipelines', async (req: Request, res: Response) => {
+    try {
+        if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+            return res.status(500).json({
+                success: false,
+                error: 'Credenciais Supabase não configuradas (langchain/.env)'
+            });
+        }
+
+        const supaResponse = await fetch(
+            `${SUPABASE_URL}/rest/v1/marketing_rag?select=ID_Conta,metadata`,
+            {
+                headers: {
+                    'apikey': SUPABASE_SERVICE_KEY,
+                    'Authorization': `Bearer ${SUPABASE_SERVICE_KEY}`,
+                }
+            }
+        );
+
+        if (!supaResponse.ok) {
+            const body = await supaResponse.text();
+            throw new Error(`Supabase retornou ${supaResponse.status}: ${body}`);
+        }
+
+        const rows: any[] = await supaResponse.json();
+
+        if (!rows || rows.length === 0) {
+            return res.json({ success: true, data: [] });
+        }
+
+        const pipelinesMap: Record<string, { ID_Conta: string; url_inferido: string; total_faqs: number }> = {};
+
+        for (const row of rows) {
+            const idConta = row.ID_Conta;
+            if (idConta && !pipelinesMap[idConta]) {
+                const domainParts = idConta.includes('_') ? idConta.split('_')[0] : idConta;
+                const urlInferido = domainParts.replace(/-/g, '.');
+                pipelinesMap[idConta] = {
+                    ID_Conta: idConta,
+                    url_inferido: urlInferido.startsWith('http') ? urlInferido : `https://${urlInferido}`,
+                    total_faqs: 0,
+                };
+            }
+        }
+
+        for (const row of rows) {
+            const idConta = row.ID_Conta;
+            if (idConta && pipelinesMap[idConta]) {
+                pipelinesMap[idConta].total_faqs += 1;
+            }
+        }
+
+        return res.json({ success: true, data: Object.values(pipelinesMap) });
+    } catch (error: any) {
+        console.error('[pipelines] Erro:', error.message);
+        return res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+/**
+ * POST /api/pipeline - Pipeline completo: scrape → markdown → ingest
+ */
+app.post('/api/pipeline', async (req: Request, res: Response) => {
+    try {
+        const { url, table = 'marketing_rag', clear = false } = req.body;
+
+        if (!url || typeof url !== 'string') {
+            return res.status(400).json({ success: false, error: 'URL obrigatória' });
+        }
+
+        const hostname = new URL(url).hostname.replace(/^www\./, '');
+        const idConta = hostname.replace(/\./g, '-');
+        const mdFilename = `${idConta}.md`;
+        const mdPath = path.join(UPLOAD_DIR, mdFilename);
+
+        console.log(`\n${'='.repeat(60)}`);
+        console.log(`  [PIPELINE] COMPLETO`);
+        console.log(`${'='.repeat(60)}`);
+        console.log(`  [URL]     : ${url}`);
+        console.log(`  [tabela]  : ${table}`);
+        console.log(`  [clear]   : ${clear}`);
+        console.log(`  [id_conta]: ${idConta}`);
+        console.log(`${'-'.repeat(60)}`);
+
+        // -- 1. Scraping -------------------------------------------
+        let scrapeResult: any;
+        await withSpinner(`[1/3] Scraping: ${hostname}`, async () => {
+            scrapeResult = await scraperService.scrapeUrl(url);
+        });
+
+        // -- 2. Markdown -------------------------------------------
+        let markdown = '';
+        await withSpinner(`[2/3] Gerando Markdown`, async () => {
+            markdown = MarkdownGenerator.generate(scrapeResult);
+            fs.writeFileSync(mdPath, markdown, 'utf-8');
+        });
+        console.log(`  [info] ${markdown.length.toLocaleString()} chars -> ${mdPath}`);
+
+        // -- 3. Ingestão FAQ ---------------------------------------
+        const chunks = Math.ceil(markdown.length / 50_000);
+        console.log(`\n  [3/3] Ingestao FAQ (${chunks} chunk${chunks > 1 ? 's' : ''} estimado${chunks > 1 ? 's' : ''})`);
+        console.log(`${'-'.repeat(60)}`);
+
+        const ingestResult = await runIngestion(mdPath, table, clear);
+
+        console.log(`${'-'.repeat(60)}`);
+        console.log(`  [OK] Ingestao concluida`);
+        console.log(`${'='.repeat(60)}\n`);
+
+        return res.json({
+            success: true,
+            message: 'Pipeline completo executado com sucesso',
+            data: {
+                url,
+                ID_Conta: idConta,
+                markdown_file: mdPath,
+                markdown_length: markdown.length,
+                table,
+                clear,
+                ingest_output: ingestResult,
+            }
+        });
+    } catch (error: any) {
+        console.error(`\n  [X] [pipeline] Erro: ${error.message}`);
+        return res.status(500).json({ success: false, error: error.message });
+    }
+});
 
 /**
  * 404 Handler
@@ -375,7 +579,7 @@ async function processScrapingJob(jobId: string, url: string, options: any) {
     }
 }
 
-// 🧹 Limpeza periódica: Remove jobs antigos (> 1 hora)
+// Limpeza periodica: Remove jobs antigos (> 1 hora)
 setInterval(() => {
     const now = Date.now();
     const oneHour = 3600000;
@@ -383,7 +587,7 @@ setInterval(() => {
     for (const [id, job] of jobQueue.entries()) {
         if (job.endTime && (now - job.endTime > oneHour)) {
             jobQueue.delete(id);
-            console.log(`🗑️  Job ${id} removido (expirado)`);
+            console.log(`[cleanup] Job ${id} removido (expirado)`);
         }
     }
 }, 600000); // Executa a cada 10 minutos
@@ -391,14 +595,17 @@ setInterval(() => {
 // Inicia o servidor
 app.listen(PORT, () => {
     console.log(`\n${'='.repeat(60)}`);
-    console.log(`🚀 API DE SCRAPING INSTITUCIONAL`);
+    console.log(`  API DE SCRAPING INSTITUCIONAL`);
     console.log(`${'='.repeat(60)}`);
-    console.log(`📡 Servidor rodando em: http://localhost:${PORT}`);
-    console.log(`\n📌 Endpoints disponíveis:`);
-    console.log(`   POST   /scrape       - Inicia scraping`);
-    console.log(`   POST   /api/ingest-markdown - Upload e ingestão por ID_Conta`);
-    console.log(`   POST   /api/chat     - Chat com proxy para N8N`);
-    console.log(`   GET    /status/:id   - Consulta status`);
-    console.log(`   GET    /health       - Health check`);
+    console.log(`  Servidor: http://localhost:${PORT}`);
+    console.log(`\n  Endpoints:`);
+    console.log(`   POST   /api/pipeline        - Pipeline completo (scrape+ingest)`);
+    console.log(`   GET    /api/pipelines       - Lista sites processados (Supabase)`);
+    console.log(`   POST   /api/chat            - Chat com proxy para N8N`);
+    console.log(`   POST   /api/ingest-markdown - Upload e ingestao por ID_Conta`);
+    console.log(`   POST   /scrape              - Inicia scraping`);
+    console.log(`   GET    /status/:id          - Consulta status`);
+    console.log(`   GET    /health              - Health check`);
+    console.log(`  Supabase: ${SUPABASE_URL ? 'Conectado' : '[!] NAO CONFIGURADO'}`);
     console.log(`${'='.repeat(60)}\n`);
 });

@@ -1,0 +1,13 @@
+{
+  "name": "agente-conversacional-front",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend do Agente Conversacional",
+  "scripts": {
+    "dev": "serve -l 8000 -s .",
+    "start": "serve -l 8000 -s ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
