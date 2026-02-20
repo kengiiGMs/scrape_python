@@ -11,19 +11,30 @@ def processar_scrape_completo(url):
     if not status or html is None:
         print("⚠️ Falha no Request , usando Playwright...")
         status, html = iniciar_playwright(url)
-        
         if not status or html is None:
             print("⚠️ Falha playwright")
             return False, None
-    
+
     print("✅ Sucesso com raspagem!")
+
+    # Adiciona a página principal como a primeira da lista
+    paginas = [{
+        'link': {'texto': 'Página Principal', 'url': url},
+        'html': html,
+        'status': True
+    }]
 
     print("🔄️ Capturando links das páginas")
     html_formatado = BeautifulSoup(html, 'html.parser')
 
     links_http = []
-    urls_vistas = set()
-    termos_ignorados = ['facebook', 'whatsapp', 'instagram', 'youtube', 'twitter', 'x.com', 'pinterest']
+    urls_vistas = {url}
+    if url.endswith('/'):
+        urls_vistas.add(url[:-1])
+    else:
+        urls_vistas.add(url + '/')
+
+    termos_ignorados = ['facebook', 'whatsapp', 'instagram', 'youtube', 'twitter', 'x.com', 'pinterest', 'wa.me', 'linkedin']
 
     header = html_formatado.find('header')
     footer = html_formatado.find('footer')
@@ -62,8 +73,8 @@ def processar_scrape_completo(url):
                     'url': url_completa
                 })
                 print(f"{link.get_text()}: {url_completa}")
+
     print('\n🔄️ Iniciando Scrape dos links das páginas coletadas\n')
-    paginas = []
 
     for link in links_http:
         print(f"Iniciando scrape do link {link['texto']}")
@@ -73,7 +84,6 @@ def processar_scrape_completo(url):
         if not status or html is None:
             print("⚠️ Falha no Request , usando Playwright...")
             status, html = iniciar_playwright(link['url'])
-            
             if not status or html is None:
                 print("⚠️ Falha playwright")
                 paginas.append({'link': link, 'html': None, 'status': False})
@@ -88,5 +98,5 @@ def processar_scrape_completo(url):
         })
 
         print(f"⚠️ Finalizando procedimento de scrape para o link: {link['texto']}\n")
-        
+
     return True, paginas

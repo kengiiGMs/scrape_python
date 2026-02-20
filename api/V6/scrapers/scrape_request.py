@@ -12,7 +12,9 @@ def iniciar_request(url):
         resposta = requests.get(url, headers=headers, timeout=10)
         resposta.raise_for_status()
 
+        resposta.encoding = resposta.apparent_encoding
         html = resposta.text
+
         
         if len(html) < 500:
             return False, None
