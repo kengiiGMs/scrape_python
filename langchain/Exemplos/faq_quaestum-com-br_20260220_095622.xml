@@ -1,0 +1,480 @@
+<?xml version='1.0' encoding='utf-8'?>
+<IngestaoFAQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Metadados>
+    <ID_Conta>quaestum-com-br</ID_Conta>
+    <ArquivoOrigem>C:\Users\bucci\Quaestum\Scrape - Copia\langchain\uploads\quaestum-com-br.md</ArquivoOrigem>
+    <TabelaDestino>marketing_rag</TabelaDestino>
+    <DataHora>2026-02-20T09:56:22.447964</DataHora>
+    <TotalFAQs>19</TotalFAQs>
+    <UsoDeTokens>
+      <LLM>
+        <Entrada>5021</Entrada>
+        <Saida>9763</Saida>
+        <Total>14784</Total>
+      </LLM>
+      <Embeddings>
+        <Estimativa>2173</Estimativa>
+      </Embeddings>
+      <TotalGeral>16957</TotalGeral>
+    </UsoDeTokens>
+  </Metadados>
+  <FAQs>
+    <FAQ id="1">
+      <Pergunta>Como posso entrar em contato com a Qvaestvm?</Pergunta>
+      <Resposta>Você pode entrar em contato com a Qvaestvm através dos seguintes canais:
+
+-   **Email:** contato@quaestum.com.br
+-   **Telefone:** (11) 99973-6395
+-   **Redes Sociais:**
+    -   Instagram: https://www.instagram.com/quaestumconsultoria/
+    -   LinkedIn: https://www.linkedin.com/company/qvaestvm/</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>contato Qvaestvm</Variacao>
+        <Variacao>telefone Qvaestvm</Variacao>
+        <Variacao>email Qvaestvm</Variacao>
+        <Variacao>redes sociais Qvaestvm</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>contato</Tag>
+        <Tag>email</Tag>
+        <Tag>telefone</Tag>
+        <Tag>instagram</Tag>
+        <Tag>linkedin</Tag>
+        <Tag>suporte</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="2">
+      <Pergunta>O que é a Qvaestvm e qual sua filosofia?</Pergunta>
+      <Resposta>A Qvaestvm, que significa "ganho" em latim, é um ecossistema colaborativo que busca construir relações onde cada interação gera valor tangível e intangível. A empresa atua como uma ponte entre o talento humano e o poder transformador da **Inteligência Artificial Generativa**, com foco em inovação, ganho mútuo e impacto positivo.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>quem somos Qvaestvm</Variacao>
+        <Variacao>história Qvaestvm</Variacao>
+        <Variacao>valores da empresa Qvaestvm</Variacao>
+        <Variacao>o que faz a Qvaestvm</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>Qvaestvm</Tag>
+        <Tag>sobre</Tag>
+        <Tag>filosofia</Tag>
+        <Tag>inteligência coletiva</Tag>
+        <Tag>IA generativa</Tag>
+        <Tag>empresa</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="3">
+      <Pergunta>Qual a missão da Qvaestvm?</Pergunta>
+      <Resposta>A missão da Qvaestvm é "**Inovação que Gera Ganho para Todos!**", buscando transformar o mundo através da inovação tecnológica e da criação de soluções personalizadas e disruptivas que simplifiquem desafios, decisões e processos. A empresa visa ser um parceiro estratégico que gera valor excepcional para clientes e sociedade.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>propósito Qvaestvm</Variacao>
+        <Variacao>objetivo da Qvaestvm</Variacao>
+        <Variacao>o que a Qvaestvm busca</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>missão</Tag>
+        <Tag>propósito</Tag>
+        <Tag>inovação</Tag>
+        <Tag>tecnologia</Tag>
+        <Tag>parceiro estratégico</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="4">
+      <Pergunta>Qual a visão da Qvaestvm?</Pergunta>
+      <Resposta>A visão da Qvaestvm é "**Ser a Referência Global em Inovação e Parceria Estratégica!**", buscando ser um ecossistema que promove o encontro de pessoas diversas, seus saberes, dados e a inovação como o principal catalisador das decisões para potencializar o futuro.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>futuro da Qvaestvm</Variacao>
+        <Variacao>onde a Qvaestvm quer chegar</Variacao>
+        <Variacao>metas da Qvaestvm</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>visão</Tag>
+        <Tag>futuro</Tag>
+        <Tag>referência global</Tag>
+        <Tag>inovação</Tag>
+        <Tag>parceria estratégica</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="5">
+      <Pergunta>Quais são os valores que guiam a Qvaestvm?</Pergunta>
+      <Resposta>Os valores que guiam a Qvaestvm e definem sua cultura organizacional são:
+
+-   **Amor pelo trabalho:** Paixão em cada projeto e solução.
+-   **Respeito:** Por cada indivíduo, ideia e cultura.
+-   **Comprometimento:** Com clientes, objetivos e o futuro.
+-   **Entusiasmo:** Energia que impulsiona a inovação e o aprendizado contínuo.
+-   **Perseverança e Resiliência:** Superando desafios e crescendo constantemente.
+-   **Espírito de equipe:** A crença de que juntos somos mais fortes.
+-   **Qualidade:** Excelência em tudo o que é feito.
+-   **Inovação:** A bússola e força motriz.
+-   **Empreendedorismo:** Visão para identificar e transformar oportunidades.
+-   **Reconhecimento:** Valorizando o esforço e a dedicação.
+-   **Propósito:** Proporcionar uma vida melhor através de soluções com impacto positivo.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>cultura Qvaestvm</Variacao>
+        <Variacao>princípios da Qvaestvm</Variacao>
+        <Variacao>ética Qvaestvm</Variacao>
+        <Variacao>no que a Qvaestvm acredita</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>valores</Tag>
+        <Tag>cultura</Tag>
+        <Tag>princípios</Tag>
+        <Tag>ética</Tag>
+        <Tag>empresa</Tag>
+        <Tag>pilares</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="6">
+      <Pergunta>O que a Qvaestvm oferece em Infraestrutura Cloud?</Pergunta>
+      <Resposta>A Qvaestvm oferece soluções completas de Infraestrutura Cloud para garantir segurança, escalabilidade e eficiência operacional. Isso inclui:
+
+-   Migração Segura
+-   Escalabilidade
+-   Otimização de Custos</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>serviços de nuvem Qvaestvm</Variacao>
+        <Variacao>migração para cloud</Variacao>
+        <Variacao>otimização de custos na nuvem</Variacao>
+        <Variacao>segurança cloud</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>cloud</Tag>
+        <Tag>infraestrutura</Tag>
+        <Tag>nuvem</Tag>
+        <Tag>segurança</Tag>
+        <Tag>escalabilidade</Tag>
+        <Tag>custos</Tag>
+        <Tag>migração</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="7">
+      <Pergunta>Como a Qvaestvm auxilia na Transformação Digital?</Pergunta>
+      <Resposta>A Qvaestvm cria estratégias personalizadas para guiar negócios na transformação digital, desde a modernização de processos até a adoção de novas tecnologias, visando agilidade competitiva. Os serviços incluem:
+
+-   Modernização de Processos
+-   Adoção Tecnológica
+-   Agilidade Competitiva</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>consultoria transformação digital</Variacao>
+        <Variacao>modernização de processos</Variacao>
+        <Variacao>adoção de novas tecnologias</Variacao>
+        <Variacao>agilidade competitiva</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>transformação digital</Tag>
+        <Tag>modernização</Tag>
+        <Tag>tecnologia</Tag>
+        <Tag>agilidade</Tag>
+        <Tag>estratégia</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="8">
+      <Pergunta>Quais soluções de IA Generativa a Qvaestvm oferece?</Pergunta>
+      <Resposta>A Qvaestvm implementa soluções baseadas em Large Language Models (LLMs) para automação inteligente e geração de conteúdo, transformando processos complexos em fluxos automatizados 24/7. As ofertas incluem:
+
+-   ChatBots Inteligentes
+-   Automação de Processos
+-   Análise Preditiva</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>serviços de IA generativa</Variacao>
+        <Variacao>implementação de LLMs</Variacao>
+        <Variacao>automação com inteligência artificial</Variacao>
+        <Variacao>chatbots inteligentes</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>IA generativa</Tag>
+        <Tag>LLMs</Tag>
+        <Tag>chatbots</Tag>
+        <Tag>automação</Tag>
+        <Tag>análise preditiva</Tag>
+        <Tag>inteligência artificial</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="9">
+      <Pergunta>A Qvaestvm oferece desenvolvimento de software personalizado?</Pergunta>
+      <Resposta>Sim, a Qvaestvm desenvolve aplicações sob medida que se encaixam perfeitamente nos processos e objetivos de cada negócio, gerando um diferencial competitivo. Isso abrange:
+
+-   Arquiteturas Escaláveis
+-   APIs Robustas
+-   Interfaces Modernas</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>criação de software sob medida</Variacao>
+        <Variacao>aplicativos personalizados</Variacao>
+        <Variacao>desenvolvimento de APIs</Variacao>
+        <Variacao>arquiteturas escaláveis</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>desenvolvimento</Tag>
+        <Tag>software</Tag>
+        <Tag>personalizado</Tag>
+        <Tag>arquitetura</Tag>
+        <Tag>APIs</Tag>
+        <Tag>interfaces</Tag>
+        <Tag>aplicação</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="10">
+      <Pergunta>Como a Qvaestvm pode ajudar com Automação Inteligente?</Pergunta>
+      <Resposta>A Qvaestvm identifica gargalos e implementa soluções para otimizar fluxos de trabalho, reduzir erros e acelerar operações, liberando equipes de tarefas repetitivas. Os serviços incluem:
+
+-   RPA com IA
+-   Workflows Inteligentes
+-   Integração de Sistemas</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>automação de processos com IA</Variacao>
+        <Variacao>RPA Qvaestvm</Variacao>
+        <Variacao>otimização de workflows</Variacao>
+        <Variacao>integração de sistemas</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>automação</Tag>
+        <Tag>RPA</Tag>
+        <Tag>workflows</Tag>
+        <Tag>integração</Tag>
+        <Tag>produtividade</Tag>
+        <Tag>eficiência</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="11">
+      <Pergunta>A Qvaestvm oferece consultoria estratégica em tecnologia?</Pergunta>
+      <Resposta>Sim, a Qvaestvm oferece orientação estratégica especializada para empresas navegarem pelo universo tecnológico, superarem desafios e aproveitarem novas oportunidades. A consultoria abrange:
+
+-   Análise de Processos
+-   Roadmap Tecnológico
+-   Change Management</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>consultoria de TI</Variacao>
+        <Variacao>orientação tecnológica</Variacao>
+        <Variacao>roadmap tecnológico</Variacao>
+        <Variacao>gestão de mudança</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>consultoria</Tag>
+        <Tag>estratégia</Tag>
+        <Tag>tecnologia</Tag>
+        <Tag>análise de processos</Tag>
+        <Tag>roadmap</Tag>
+        <Tag>change management</Tag>
+        <Tag>TI</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="12">
+      <Pergunta>Como a Qvaestvm transforma dados em decisões estratégicas?</Pergunta>
+      <Resposta>A Qvaestvm oferece soluções que transformam dados em inteligência, revelando padrões, identificando oportunidades e otimizando processos para o sucesso do cliente. Os serviços incluem:
+
+-   Business Intelligence
+-   Machine Learning
+-   Dashboards Interativos</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>serviços de análise de dados</Variacao>
+        <Variacao>business intelligence Qvaestvm</Variacao>
+        <Variacao>machine learning para negócios</Variacao>
+        <Variacao>dashboards interativos</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>análise de dados</Tag>
+        <Tag>business intelligence</Tag>
+        <Tag>machine learning</Tag>
+        <Tag>dashboards</Tag>
+        <Tag>decisões estratégicas</Tag>
+        <Tag>BI</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="13">
+      <Pergunta>Quais serviços de Segurança Digital a Qvaestvm oferece?</Pergunta>
+      <Resposta>A Qvaestvm oferece proteção robusta para dados e sistemas críticos, blindando empresas contra ameaças cibernéticas. Os serviços incluem:
+
+-   Cybersecurity
+-   LGPD Compliance
+-   Auditoria de Segurança</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>proteção de dados Qvaestvm</Variacao>
+        <Variacao>cybersecurity</Variacao>
+        <Variacao>LGPD compliance</Variacao>
+        <Variacao>auditoria de segurança</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>segurança digital</Tag>
+        <Tag>cybersecurity</Tag>
+        <Tag>LGPD</Tag>
+        <Tag>compliance</Tag>
+        <Tag>auditoria</Tag>
+        <Tag>dados</Tag>
+        <Tag>proteção</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="14">
+      <Pergunta>Qual o compromisso da Qvaestvm com a inovação e evolução contínua?</Pergunta>
+      <Resposta>A Qvaestvm tem como lema a evolução contínua, acompanhando as últimas tendências tecnológicas, explorando novas possibilidades e antecipando o futuro. O compromisso é transformar desafios complexos em oportunidades reais através de soluções inteligentes, escaláveis e inovadoras, impulsionando o crescimento sustentável.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Qvaestvm e inovação</Variacao>
+        <Variacao>evolução tecnológica Qvaestvm</Variacao>
+        <Variacao>futuro da tecnologia Qvaestvm</Variacao>
+        <Variacao>adaptação tecnológica</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>inovação</Tag>
+        <Tag>evolução contínua</Tag>
+        <Tag>tecnologia</Tag>
+        <Tag>futuro</Tag>
+        <Tag>crescimento sustentável</Tag>
+        <Tag>P&amp;D</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="15">
+      <Pergunta>Como posso iniciar um projeto com a Qvaestvm?</Pergunta>
+      <Resposta>Se você tem uma ideia, um desafio ou um projeto, a equipe de especialistas da Qvaestvm está pronta para ouvir suas necessidades e construir, em parceria, soluções inovadoras e sob medida. Você pode **Enviar Mensagem** através do formulário de contato.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>quero fazer um projeto com a Qvaestvm</Variacao>
+        <Variacao>como contratar a Qvaestvm</Variacao>
+        <Variacao>solicitar orçamento Qvaestvm</Variacao>
+        <Variacao>transformar ideia em realidade</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>iniciar projeto</Tag>
+        <Tag>parceria</Tag>
+        <Tag>soluções</Tag>
+        <Tag>contato</Tag>
+        <Tag>orçamento</Tag>
+        <Tag>proposta</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="16">
+      <Pergunta>Quais são os resultados e o impacto gerado pela Qvaestvm?</Pergunta>
+      <Resposta>A Qvaestvm apresenta os seguintes resultados que demonstram o impacto real gerado para seus clientes e parceiros:
+
+-   **30+ Clientes:** Empresas que confiam nas soluções.
+-   **250+ Projetos Entregues:** Soluções implementadas com sucesso.
+-   **R$230MM Economia Gerada:** Saving operacional para clientes.
+-   **500K+ Horas de Desenvolvimento:** Experiência acumulada em projetos.
+-   **10K+ Horas em P&amp;D:** Investimento em pesquisa e desenvolvimento.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>cases de sucesso Qvaestvm</Variacao>
+        <Variacao>números da Qvaestvm</Variacao>
+        <Variacao>economia gerada por Qvaestvm</Variacao>
+        <Variacao>experiência Qvaestvm</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>resultados</Tag>
+        <Tag>impacto</Tag>
+        <Tag>clientes</Tag>
+        <Tag>projetos</Tag>
+        <Tag>economia</Tag>
+        <Tag>P&amp;D</Tag>
+        <Tag>cases</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="17">
+      <Pergunta>Como é a equipe da Qvaestvm?</Pergunta>
+      <Resposta>A equipe da Qvaestvm é composta por profissionais apaixonados, talentosos e comprometidos, que trazem diversidade de saberes e paixão por construir soluções. A empresa acredita que a inteligência coletiva é a chave para um futuro mais humano e promissor, focando em experiência, colaboração e confiança.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>profissionais da Qvaestvm</Variacao>
+        <Variacao>cultura de equipe Qvaestvm</Variacao>
+        <Variacao>quem trabalha na Qvaestvm</Variacao>
+        <Variacao>talentos Qvaestvm</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>equipe</Tag>
+        <Tag>colaboradores</Tag>
+        <Tag>talentos</Tag>
+        <Tag>inteligência coletiva</Tag>
+        <Tag>cultura</Tag>
+        <Tag>profissionais</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="18">
+      <Pergunta>Como posso me candidatar a uma vaga na Qvaestvm?</Pergunta>
+      <Resposta>Se você é apaixonado por tecnologia e inovação, pode fazer parte da equipe da Qvaestvm. Preencha o formulário disponível na seção de **Carreiras**, selecione uma área de interesse (Desenvolvimento, IA Generativa, Análise de Dados, Consultoria, DevOps, UX/UI Design, Gestão de Projetos, Vendas, Marketing, Outros) e anexe seu currículo (PDF/DOC).</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>Job Seeker</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>trabalhar na Qvaestvm</Variacao>
+        <Variacao>enviar currículo Qvaestvm</Variacao>
+        <Variacao>vagas de emprego Qvaestvm</Variacao>
+        <Variacao>carreiras Qvaestvm</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>carreiras</Tag>
+        <Tag>vagas</Tag>
+        <Tag>trabalhar</Tag>
+        <Tag>currículo</Tag>
+        <Tag>IA</Tag>
+        <Tag>tecnologia</Tag>
+        <Tag>emprego</Tag>
+        <Tag>recrutamento</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="19">
+      <Pergunta>Como posso enviar uma mensagem ou solicitação para a Qvaestvm?</Pergunta>
+      <Resposta>Você pode preencher o formulário de contato disponível na página "Entre em Contato", selecionando um assunto (Projeto Personalizado, Produtos, Consultoria, Outros) e fornecendo suas informações. A equipe especialista da Qvaestvm se compromete a responder em até 24 horas.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>Prospective Client</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>falar com Qvaestvm</Variacao>
+        <Variacao>contato via formulário</Variacao>
+        <Variacao>solicitar informações Qvaestvm</Variacao>
+        <Variacao>atendimento Qvaestvm</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>contato</Tag>
+        <Tag>formulário</Tag>
+        <Tag>mensagem</Tag>
+        <Tag>solicitação</Tag>
+        <Tag>atendimento</Tag>
+        <Tag>suporte</Tag>
+      </Tags>
+    </FAQ>
+  </FAQs>
+</IngestaoFAQ>
