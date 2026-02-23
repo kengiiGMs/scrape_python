@@ -57,21 +57,32 @@ class JobManager:
             logger.info(f"Iniciando scrape único para job {job_id} - URL: {url}")
             
             # Executa a função original
-            status, html_processado, informacoes_da_pagina, nome_arquivo_gerado = processar_scrape_unico(url)
+            status, html_processado = processar_scrape_unico(url)
 
             if status and html_processado:
-                markdown = html_para_markdown(html_processado)
-                
-                # Salva os arquivos (mantendo comportamento original de salvar localmente)
-                salvar_arquivo_local(conteudo=markdown, nome_arquivo=nome_arquivo_gerado)
-                salvar_arquivo_local(conteudo=informacoes_da_pagina, nome_arquivo=f"{nome_arquivo_gerado}_informacoes")
+                conteudo_bruto = html_para_markdown(html_processado['html'])
+                conteudo_pagina = limpar_markdown(conteudo_bruto)
+                markdown=({
+                    "link": html_processado['link'], 
+                    "conteudo": conteudo_pagina, 
+                })
+                print("\n=== SCRAPPE DAS PÁGINAS FINALIZADO ===\n")
 
+                conteudo_completo = ""
+                conteudo_completo += f"\n{'='*40}\n"
+                conteudo_completo += f"TÍTULO: {markdown['link']['texto']}\n"
+                conteudo_completo += f"LINK: {markdown['link']['url']}\n"
+                conteudo_completo += f"{'='*40}\n\n"
+                conteudo_completo += "--- CONTEÚDO PRINCIPAL IDENTIFICADO ---\n\n"
+                conteudo_completo += str(markdown['conteudo']) + "\n\n"
+                    
+                nome_arquivo_unico = f"{gerar_nome_arquivo_da_url(url)}_relatorio_completo_unico"
+                salvar_arquivo_local(conteudo=conteudo_completo, nome_arquivo=nome_arquivo_unico)
+                
                 result_data = {
-                    "markdown": markdown,
-                    "metadata": informacoes_da_pagina,
+                    "markdown": conteudo_pagina,
                     "saved_files": [
-                        f"{nome_arquivo_gerado}.md",
-                        f"{nome_arquivo_gerado}_informacoes.json" # Assumindo json ou txt dependendo da impl do salvar_arquivo_local
+                        f"{nome_arquivo_unico}.md",
                     ]
                 }
                 self.update_job_status(job_id, JobStatus.COMPLETED, result=result_data)

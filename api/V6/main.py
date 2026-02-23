@@ -18,21 +18,29 @@ if __name__ == "__main__":
     while modo != 9:
         match modo:
             case 1:
-                status, html_processado, informacoes_da_pagina, nome_arquivo_gerado = processar_scrape_unico(url)
+                status, html_processado = processar_scrape_unico(url)
             
                 if status and html_processado:
-                    print("\n=== RESULTADO EM MARKDOWN ===\n")
-                    markdown = html_para_markdown(html_processado)
-                    print(markdown)
+                    conteudo_bruto = html_para_markdown(html_processado['html'])
+                    conteudo_pagina = limpar_markdown(conteudo_bruto)
+                    markdown=({
+                        "link": html_processado['link'], 
+                        "conteudo": conteudo_pagina, 
+                    })
+                    print("\n=== SCRAPPE DAS PÁGINAS FINALIZADO ===\n")
 
-                    print("\n=== INFORMAÇÕES DA PÁGINA CAPTURADAS ===\n")
-                    print(informacoes_da_pagina)
-                    
+                    conteudo_completo = ""
+                    conteudo_completo += f"\n{'='*40}\n"
+                    conteudo_completo += f"TÍTULO: {markdown['link']['texto']}\n"
+                    conteudo_completo += f"LINK: {markdown['link']['url']}\n"
+                    conteudo_completo += f"{'='*40}\n\n"
+                    conteudo_completo += "--- CONTEÚDO PRINCIPAL IDENTIFICADO ---\n\n"
+                    conteudo_completo += str(markdown['conteudo']) + "\n\n"
                     # Salvar em arquivo (opcional)
                     salvar_arquivo = input("\nDeseja salvar em arquivo? (s/n): ")
                     if salvar_arquivo.lower() == 's':
-                        salvar_arquivo_local(conteudo=markdown, nome_arquivo=nome_arquivo_gerado)
-                        salvar_arquivo_local(conteudo=informacoes_da_pagina, nome_arquivo=f"{nome_arquivo_gerado}_informacoes")
+                        nome_arquivo_unico = f"{gerar_nome_arquivo_da_url(url)}_relatorio_completo_unico"
+                        salvar_arquivo_local(conteudo=conteudo_completo, nome_arquivo=nome_arquivo_unico)
                     break
                 else:
                     print("❌ Erro não foi possível raspar a página!")
@@ -64,7 +72,7 @@ if __name__ == "__main__":
                                 conteudo_completo += f"{'='*40}\n\n"
                                 conteudo_completo += "--- CONTEÚDO PRINCIPAL IDENTIFICADO ---\n\n"
                                 conteudo_completo += str(arquivo['conteudo']) + "\n\n"
-                            nome_arquivo_unico = f"{gerar_nome_arquivo_da_url(url)}_relatorio_completo"
+                            nome_arquivo_unico = f"{gerar_nome_arquivo_da_url(url)}_relatorio_completo_multi"
                             salvar_arquivo_local(conteudo=conteudo_completo, nome_arquivo=nome_arquivo_unico)
                         else:
                             for idx, arquivo in enumerate(markdown, 1):

@@ -19,7 +19,7 @@ Sistema unificado em Python com pipeline automático de scraping, geração de m
 # Criar venv
 python -m venv venv
 
-# Ativar no Windows
+# Ativar no Windowshttps://chacarawanderlust.com.br/
 venv\Scripts\activate
 
 # Ativar no Linux/Mac
