@@ -108,6 +108,7 @@ class JobManager:
                         # Monta string pro arquivo completo
                         conteudo_completo += f"\n{'='*40}\n"
                         conteudo_completo += f"TÍTULO: {item['link']['texto']}\n"
+                        conteudo_completo += f"LINK: {item['link']['url']}\n"
                         conteudo_completo += f"{'='*40}\n\n"
                         conteudo_completo += "--- CONTEÚDO PRINCIPAL IDENTIFICADO ---\n\n"
                         conteudo_completo += str(item['conteudo']) + "\n\n"
