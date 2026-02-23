@@ -87,6 +87,23 @@ class ProgressSpinner:
 
 
 
+# ──────────────────────────────────────────────────────────────
+# TABELA DE PREÇOS — Google Gemini (atualizado: Fev/2026)
+# Fonte: https://ai.google.dev/pricing
+# ──────────────────────────────────────────────────────────────
+PRICING = {
+    "gemini-2.5-flash": {
+        "input_per_million":  0.30,   # USD por 1M tokens de entrada
+        "output_per_million": 2.50,   # USD por 1M tokens de saída
+    },
+    "gemini-embedding-001": {
+        "input_per_million":  0.15,   # USD por 1M tokens
+    },
+}
+USD_TO_BRL = 5.80  # Câmbio aproximado — ajuste conforme necessário
+# ──────────────────────────────────────────────────────────────
+
+
 # Classe para rastrear uso de tokens
 class TokenUsageTracker(BaseCallbackHandler):
     """Callback para rastrear uso de tokens do LLM e embeddings."""
@@ -96,6 +113,7 @@ class TokenUsageTracker(BaseCallbackHandler):
         self.llm_output_tokens = 0
         self.llm_total_tokens = 0
         self.embedding_tokens = 0
+        self.start_time = time.time()
         
     def on_llm_end(self, response: Any, **kwargs) -> None:
         """Captura tokens usados pelo LLM."""
@@ -119,22 +137,57 @@ class TokenUsageTracker(BaseCallbackHandler):
             'total_all': self.llm_total_tokens + self.embedding_tokens
         }
     
+    def get_cost_summary(self) -> Dict[str, Any]:
+        """Calcula custos em USD e BRL com base na tabela de preços."""
+        p_llm = PRICING["gemini-2.5-flash"]
+        p_emb = PRICING["gemini-embedding-001"]
+
+        llm_input_cost  = (self.llm_input_tokens  / 1_000_000) * p_llm["input_per_million"]
+        llm_output_cost = (self.llm_output_tokens / 1_000_000) * p_llm["output_per_million"]
+        llm_total_cost  = llm_input_cost + llm_output_cost
+
+        emb_cost = (self.embedding_tokens / 1_000_000) * p_emb["input_per_million"]
+
+        total_usd = llm_total_cost + emb_cost
+        total_brl = total_usd * USD_TO_BRL
+
+        return {
+            'llm': {
+                'input_cost_usd': llm_input_cost,
+                'output_cost_usd': llm_output_cost,
+                'total_cost_usd': llm_total_cost,
+            },
+            'embeddings': {
+                'cost_usd': emb_cost,
+            },
+            'total_usd': total_usd,
+            'total_brl': total_brl,
+            'usd_to_brl_rate': USD_TO_BRL,
+        }
+    
     def print_summary(self):
-        """Imprime um resumo formatado do uso de tokens."""
+        """Imprime um resumo formatado do uso de tokens e custos."""
         summary = self.get_summary()
+        costs = self.get_cost_summary()
+        elapsed = time.time() - self.start_time
+
         print("\n" + "=" * 80)
-        print("RESUMO DE USO DE TOKENS")
+        print("RESUMO DE USO DE TOKENS E CUSTOS")
         print("=" * 80)
         print(f"\nLLM (Gemini 2.5 Flash):")
-        print(f"   - Tokens de entrada: {summary['llm']['input_tokens']:,}")
-        print(f"   - Tokens de saida: {summary['llm']['output_tokens']:,}")
-        print(f"   - Total LLM: {summary['llm']['total_tokens']:,}")
+        print(f"   - Tokens de entrada:  {summary['llm']['input_tokens']:>10,}  |  ${costs['llm']['input_cost_usd']:.6f}")
+        print(f"   - Tokens de saida:    {summary['llm']['output_tokens']:>10,}  |  ${costs['llm']['output_cost_usd']:.6f}")
+        print(f"   - Total LLM:          {summary['llm']['total_tokens']:>10,}  |  ${costs['llm']['total_cost_usd']:.6f}")
         
         if summary['embeddings']['tokens'] > 0:
-            print(f"\nEmbeddings (Gemini Embedding):")
-            print(f"   - Tokens processados: {summary['embeddings']['tokens']:,}")
+            print(f"\nEmbeddings (Gemini Embedding-001):")
+            print(f"   - Tokens estimados:   {summary['embeddings']['tokens']:>10,}  |  ${costs['embeddings']['cost_usd']:.6f}")
         
-        print(f"\nTOTAL GERAL: {summary['total_all']:,} tokens")
+        print(f"\n{'-' * 50}")
+        print(f"   TOTAL GERAL:          {summary['total_all']:>10,} tokens")
+        print(f"   CUSTO TOTAL:          ${costs['total_usd']:.6f} USD  |  R$ {costs['total_brl']:.4f} BRL")
+        print(f"   Tempo total:          {elapsed:.1f}s")
+        print(f"   Câmbio usado:         1 USD = {USD_TO_BRL} BRL")
         print("=" * 80)
 
 
@@ -539,6 +592,7 @@ def export_to_xml(faq_response, id_conta: str, tracker, args_input: str, args_ta
     
     # Tokens
     summary = tracker.get_summary()
+    costs = tracker.get_cost_summary()
     tokens_el = ET.SubElement(meta, "UsoDeTokens")
     llm_el = ET.SubElement(tokens_el, "LLM")
     ET.SubElement(llm_el, "Entrada").text = str(summary['llm']['input_tokens'])
@@ -547,6 +601,14 @@ def export_to_xml(faq_response, id_conta: str, tracker, args_input: str, args_ta
     emb_el = ET.SubElement(tokens_el, "Embeddings")
     ET.SubElement(emb_el, "Estimativa").text = str(summary['embeddings']['tokens'])
     ET.SubElement(tokens_el, "TotalGeral").text = str(summary['total_all'])
+    
+    # Custos
+    custos_el = ET.SubElement(meta, "Custos")
+    ET.SubElement(custos_el, "LLM_USD").text = f"${costs['llm']['total_cost_usd']:.6f}"
+    ET.SubElement(custos_el, "Embeddings_USD").text = f"${costs['embeddings']['cost_usd']:.6f}"
+    ET.SubElement(custos_el, "Total_USD").text = f"${costs['total_usd']:.6f}"
+    ET.SubElement(custos_el, "Total_BRL").text = f"R${costs['total_brl']:.4f}"
+    ET.SubElement(custos_el, "Cambio").text = f"1 USD = {costs['usd_to_brl_rate']} BRL"
     
     # FAQs
     faqs_el = ET.SubElement(root, "FAQs")
@@ -573,6 +635,100 @@ def export_to_xml(faq_response, id_conta: str, tracker, args_input: str, args_ta
     tree.write(str(output_path), encoding="utf-8", xml_declaration=True)
     
     print(f"\n[OK] XML exportado: {output_path}")
+    return str(output_path)
+
+
+def export_cost_report(
+    tracker: TokenUsageTracker,
+    id_conta: str,
+    args_input: str,
+    args_table: str,
+    num_faqs: int,
+    categories: Dict[str, int],
+    output_dir=None
+) -> str:
+    """Gera um relatório .txt detalhado de uso de tokens e custos."""
+    
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"custos_{id_conta}_{timestamp}.txt"
+    
+    if output_dir is None:
+        script_dir = Path(__file__).parent
+        output_dir = script_dir / "Exemplos"
+    
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / filename
+    
+    summary = tracker.get_summary()
+    costs = tracker.get_cost_summary()
+    elapsed = time.time() - tracker.start_time
+    
+    lines = []
+    lines.append("=" * 70)
+    lines.append("   RELATÓRIO DE CUSTOS — INGESTÃO AGÊNTICA DE FAQs")
+    lines.append("=" * 70)
+    lines.append("")
+    lines.append(f"   Data/Hora:          {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
+    lines.append(f"   ID_Conta:           {id_conta}")
+    lines.append(f"   Arquivo Origem:     {args_input}")
+    lines.append(f"   Tabela Supabase:    {args_table}")
+    lines.append(f"   FAQs Gerados:       {num_faqs}")
+    lines.append(f"   Tempo Total:        {elapsed:.1f}s ({elapsed/60:.1f}min)")
+    lines.append("")
+    lines.append("─" * 70)
+    lines.append("   DETALHAMENTO DE TOKENS")
+    lines.append("─" * 70)
+    lines.append("")
+    lines.append("   ┌─────────────────────────────────────────────────────────┐")
+    lines.append("   │  MODELO                │   TOKENS   │  CUSTO (USD)     │")
+    lines.append("   ├─────────────────────────────────────────────────────────┤")
+    lines.append(f"   │  Gemini 2.5 Flash      │            │                  │")
+    lines.append(f"   │    → Entrada            │ {summary['llm']['input_tokens']:>10,} │  ${costs['llm']['input_cost_usd']:>12.6f}  │")
+    lines.append(f"   │    → Saída              │ {summary['llm']['output_tokens']:>10,} │  ${costs['llm']['output_cost_usd']:>12.6f}  │")
+    lines.append(f"   │    → Subtotal LLM       │ {summary['llm']['total_tokens']:>10,} │  ${costs['llm']['total_cost_usd']:>12.6f}  │")
+    lines.append("   ├─────────────────────────────────────────────────────────┤")
+    lines.append(f"   │  Gemini Embedding-001   │ {summary['embeddings']['tokens']:>10,} │  ${costs['embeddings']['cost_usd']:>12.6f}  │")
+    lines.append("   ├─────────────────────────────────────────────────────────┤")
+    lines.append(f"   │  TOTAL                  │ {summary['total_all']:>10,} │  ${costs['total_usd']:>12.6f}  │")
+    lines.append("   └─────────────────────────────────────────────────────────┘")
+    lines.append("")
+    lines.append("─" * 70)
+    lines.append("   CONVERSÃO PARA BRL")
+    lines.append("─" * 70)
+    lines.append("")
+    lines.append(f"   Câmbio utilizado:     1 USD = R$ {costs['usd_to_brl_rate']:.2f}")
+    lines.append(f"   Custo Total em BRL:   R$ {costs['total_brl']:.4f}")
+    lines.append("")
+    lines.append("─" * 70)
+    lines.append("   TABELA DE PREÇOS UTILIZADA")
+    lines.append("─" * 70)
+    lines.append("")
+    lines.append("   Gemini 2.5 Flash:")
+    lines.append(f"     Entrada:  ${PRICING['gemini-2.5-flash']['input_per_million']:.2f} / 1M tokens")
+    lines.append(f"     Saída:    ${PRICING['gemini-2.5-flash']['output_per_million']:.2f} / 1M tokens")
+    lines.append("   Gemini Embedding-001:")
+    lines.append(f"     Entrada:  ${PRICING['gemini-embedding-001']['input_per_million']:.2f} / 1M tokens")
+    lines.append("")
+    
+    if categories:
+        lines.append("─" * 70)
+        lines.append("   FAQs POR CATEGORIA")
+        lines.append("─" * 70)
+        lines.append("")
+        for cat, count in sorted(categories.items(), key=lambda x: x[1], reverse=True):
+            bar = "█" * min(count, 40)
+            lines.append(f"   {cat:<30} {count:>4}  {bar}")
+        lines.append("")
+    
+    lines.append("=" * 70)
+    lines.append("   Gerado automaticamente por Agente_FAQ.py")
+    lines.append("=" * 70)
+    
+    report_text = "\n".join(lines)
+    output_path.write_text(report_text, encoding="utf-8")
+    
+    print(f"[OK] Relatório de custos: {output_path}")
     return str(output_path)
 
 
@@ -664,6 +820,18 @@ def main():
             output_dir=args.output_xml
         )
         
+        # Estatísticas por categoria
+        categories = {}
+        for faq in faq_response.faq_items:
+            categories[faq.category] = categories.get(faq.category, 0) + 1
+        
+        # 6. Exporta relatório de custos
+        cost_path = export_cost_report(
+            tracker, id_conta, args.input, args.table,
+            len(faq_response.faq_items), categories,
+            output_dir=args.output_xml
+        )
+        
         print("\n" + "=" * 80)
         print("INGESTAO CONCLUIDA COM SUCESSO!")
         print("=" * 80)
@@ -674,17 +842,13 @@ def main():
         print(f"   - Tabela: {args.table}")
         print(f"   - Modo clear: {'Sim' if args.clear else 'Nao'}")
         print(f"   - XML gerado: {xml_path}")
-        
-        # Estatísticas por categoria
-        categories = {}
-        for faq in faq_response.faq_items:
-            categories[faq.category] = categories.get(faq.category, 0) + 1
+        print(f"   - Relatório de custos: {cost_path}")
         
         print(f"\nFAQs por categoria:")
         for category, count in sorted(categories.items(), key=lambda x: x[1], reverse=True):
             print(f"   - {category}: {count}")
         
-        # Imprime resumo de uso de tokens
+        # Imprime resumo de uso de tokens e custos
         tracker.print_summary()
         
     except Exception as e:
