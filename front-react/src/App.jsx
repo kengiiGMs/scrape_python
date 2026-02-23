@@ -2,7 +2,6 @@ import { useState, useCallback } from 'react';
 import { Toaster } from 'react-hot-toast';
 import toast from 'react-hot-toast';
 import { AppProvider, useApp } from './context/AppContext';
-import CometBackground from './components/CometBackground';
 import LandingPage from './pages/LandingPage';
 import ChatInterface from './pages/ChatInterface';
 import PipelineLoader from './components/PipelineLoader';
@@ -48,8 +47,6 @@ function AppInner() {
 
   return (
     <div className="app-root">
-      <CometBackground />
-
       {view === 'landing' && (
         <LandingPage
           onStartPipeline={handleStartPipeline}

@@ -12,6 +12,8 @@ venv/
 ENV/
 env/
 lixo/   
+teste/   
+scrape_python/
 
 # Variáveis de ambiente sensíveis
 .env

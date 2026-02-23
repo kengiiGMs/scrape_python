@@ -1,9 +1,11 @@
 import os
 import sys
+import asyncio
 import subprocess
 from pathlib import Path
 from datetime import datetime
 from typing import Optional
+from urllib.parse import urlparse
 
 import httpx
 from dotenv import load_dotenv
@@ -38,7 +40,19 @@ SUPABASE_URL = os.getenv("SUPABASE_URL") or ""
 SUPABASE_SERVICE_KEY = os.getenv("SUPABASE_SERVICE_KEY") or ""
 
 PORT = int(os.getenv("PORT", "3000"))
-FRONT_ORIGIN = os.getenv("FRONT_ORIGIN", "http://localhost:8080")
+
+# Origens permitidas: inclui o Vite dev (5173), o antigo front (8080)
+# e qualquer origem extra definida via FRONT_ORIGIN no .env
+_extra_origin = os.getenv("FRONT_ORIGIN", "")
+ALLOWED_ORIGINS = [
+    "http://localhost:5173",   # Vite/React (dev)
+    "http://localhost:5174",   # Vite fallback
+    "http://localhost:8080",   # front legado
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:8080",
+]
+if _extra_origin and _extra_origin not in ALLOWED_ORIGINS:
+    ALLOWED_ORIGINS.append(_extra_origin)
 
 
 class ChatRequest(BaseModel):
@@ -65,7 +79,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[FRONT_ORIGIN],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -110,17 +124,24 @@ def executar_ingestao(input_path: str, table: str, clear: bool) -> dict:
     if clear:
         args.append("--clear")
 
+    # Garante UTF-8 no subprocess independente do locale do Windows (evita UnicodeEncodeError)
+    env = os.environ.copy()
+    env["PYTHONIOENCODING"] = "utf-8"
+
     result = subprocess.run(
         args,
         cwd=str(ROOT_DIR),
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         timeout=300,
+        env=env,
     )
 
     if result.returncode != 0:
         raise RuntimeError(
-            f"Ingestão falhou (código {result.returncode}). "
+            f"Ingestão falhou com código {result.returncode}. "
             f"Detalhes: {result.stderr or result.stdout}"
         )
 
@@ -279,7 +300,90 @@ async def chat_endpoint(request: ChatRequest):
 
 
 # ---------------------------------------------------------------------------
-# Ingestão de Markdown (upload)
+# Pipeline completo: scrape URL → salva markdown → ingere no Supabase
+# ---------------------------------------------------------------------------
+
+class PipelineRequest(BaseModel):
+    url: str
+    table: str = "marketing_rag"
+    clear: bool = False
+
+
+@app.post("/api/pipeline", response_model=IngestResponse)
+async def run_pipeline(request: PipelineRequest):
+    """
+    Pipeline completo chamado pelo frontend:
+    1. Dispara o scrape da URL
+    2. Aguarda a conclusão do job de scrape
+    3. Salva o markdown resultante em disco
+    4. Executa a ingestão (Agente_FAQ.py) no Supabase
+    """
+    try:
+        # 1. Inicia o job de scrape (multi para cobrir todo o site)
+        job_id = job_manager.start_multi_scrape_job(request.url)
+
+        # 2. Aguarda conclusão (polling com timeout de 5 minutos)
+        timeout_s = 300
+        poll_interval = 2
+        elapsed = 0
+        while elapsed < timeout_s:
+            await asyncio.sleep(poll_interval)
+            elapsed += poll_interval
+            job = job_manager.get_job(job_id)
+            if job is None:
+                raise HTTPException(status_code=500, detail="Job de scrape não encontrado")
+            if job.status == JobStatus.FAILED:
+                raise HTTPException(
+                    status_code=500,
+                    detail=f"Scrape falhou: {job.error or 'erro desconhecido'}",
+                )
+            if job.status == JobStatus.COMPLETED:
+                break
+        else:
+            raise HTTPException(status_code=504, detail="Timeout aguardando scrape")
+
+        # 3. Monta o markdown consolidado a partir do resultado do job
+        result = job.result or {}
+        parsed_url = urlparse(request.url)
+        domain = parsed_url.netloc.replace("www.", "").replace(".", "_").replace("-", "_")
+        id_conta = domain or "site"
+        target_path = UPLOAD_DIR / f"{id_conta}.md"
+
+        if "full_report" in result:
+            # Scrape multi já traz o relatório consolidado
+            target_path.write_text(result["full_report"], encoding="utf-8")
+        elif "markdown" in result:
+            # Scrape único
+            target_path.write_text(result["markdown"], encoding="utf-8")
+        else:
+            raise HTTPException(
+                status_code=500,
+                detail="Scrape concluído mas sem conteúdo Markdown para ingerir",
+            )
+
+        # 4. Executa a ingestão
+        ingest_result = executar_ingestao(str(target_path), request.table, request.clear)
+
+        return IngestResponse(
+            success=True,
+            message="Pipeline concluído com sucesso",
+            data={
+                "ID_Conta": id_conta,
+                "filePath": str(target_path),
+                "table": request.table,
+                "clear": request.clear,
+                "scrape_job_id": job_id,
+                "output": ingest_result,
+            },
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ---------------------------------------------------------------------------
+# Ingestão de Markdown (upload direto de arquivo)
 # ---------------------------------------------------------------------------
 
 @app.post("/api/ingest-markdown", response_model=IngestResponse)

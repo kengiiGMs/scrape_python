@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='utf-8'?>
+<IngestaoFAQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Metadados>
+    <ID_Conta>chacarawanderlust_com_br</ID_Conta>
+    <ArquivoOrigem>C:\Users\bucci\Quaestum\Scrape - Copia\langchain\uploads\chacarawanderlust_com_br.md</ArquivoOrigem>
+    <TabelaDestino>marketing_rag</TabelaDestino>
+    <DataHora>2026-02-23T10:32:01.930740</DataHora>
+    <TotalFAQs>7</TotalFAQs>
+    <UsoDeTokens>
+      <LLM>
+        <Entrada>2734</Entrada>
+        <Saida>5442</Saida>
+        <Total>8176</Total>
+      </LLM>
+      <Embeddings>
+        <Estimativa>863</Estimativa>
+      </Embeddings>
+      <TotalGeral>9039</TotalGeral>
+    </UsoDeTokens>
+    <Custos>
+      <LLM_USD>$0.014425</LLM_USD>
+      <Embeddings_USD>$0.000129</Embeddings_USD>
+      <Total_USD>$0.014555</Total_USD>
+      <Total_BRL>R$0.0844</Total_BRL>
+      <Cambio>1 USD = 5.8 BRL</Cambio>
+    </Custos>
+  </Metadados>
+  <FAQs>
+    <FAQ id="1">
+      <Pergunta>O que é a Wanderlust Chácara e Pousada?</Pergunta>
+      <Resposta>A Wanderlust é um complexo que oferece duas instalações distintas: uma **Pousada** com apenas seis suítes para maior privacidade e uma **Chácara**, uma imponente construção ideal para eventos como casamentos, eventos corporativos, aniversários, encontros religiosos, feriados ou simplesmente um fim de semana com familiares e amigos.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que a Wanderlust oferece?</Variacao>
+        <Variacao>Quais os serviços da Wanderlust?</Variacao>
+        <Variacao>Informações sobre Wanderlust</Variacao>
+        <Variacao>Complexo Wanderlust</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>wanderlust</Tag>
+        <Tag>pousada</Tag>
+        <Tag>chácara</Tag>
+        <Tag>eventos</Tag>
+        <Tag>hospedagem</Tag>
+        <Tag>complexo</Tag>
+        <Tag>serviços</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="2">
+      <Pergunta>Quais são as comodidades oferecidas na Pousada Wanderlust?</Pergunta>
+      <Resposta>A Pousada Wanderlust oferece as seguintes comodidades:
+- Todos os quartos com banheiros privativos
+- Todos os quartos com mesa de trabalho / Penteadeira e ventilador
+- Café da manhã incluso
+- Cortesia de transfer para o Monte Castelo
+- Estacionamento gratuito, acessível, privativo e seguro
+- Internet Wi-Fi em toda a pousada
+- Restaurante / Bar no local
+- Piscina adulta e infantil + Espreguiçadeiras
+- Entretenimento com TV Smart e mesa de pebolim na área comum</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que tem na pousada?</Variacao>
+        <Variacao>Serviços da Pousada Wanderlust</Variacao>
+        <Variacao>Quartos da pousada</Variacao>
+        <Variacao>Piscina pousada</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>pousada</Tag>
+        <Tag>comodidades</Tag>
+        <Tag>serviços</Tag>
+        <Tag>quartos</Tag>
+        <Tag>café da manhã</Tag>
+        <Tag>piscina</Tag>
+        <Tag>wi-fi</Tag>
+        <Tag>estacionamento</Tag>
+        <Tag>transfer</Tag>
+        <Tag>restaurante</Tag>
+        <Tag>bar</Tag>
+        <Tag>entretenimento</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="3">
+      <Pergunta>Quais são as instalações e comodidades da Chácara Wanderlust?</Pergunta>
+      <Resposta>A Chácara Wanderlust oferece:
+- Acomodações para até 25 pessoas
+- 4 banheiros
+- Sala com smart TV e Wi-Fi por todas as dependências
+- Salão de festas coberto para até 150 pessoas
+- Cozinha completa com fogão industrial, forno e fogão a lenha, geladeira, micro-ondas e freezer
+- Piscina com área gourmet e churrasqueira
+- Salão de jogos e campinho de futebol
+- Estacionamento para mais de 30 carros
+- É petfriendly</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que a chácara oferece?</Variacao>
+        <Variacao>Estrutura da Chácara Wanderlust</Variacao>
+        <Variacao>Capacidade da chácara</Variacao>
+        <Variacao>Salão de festas chácara</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>chácara</Tag>
+        <Tag>instalações</Tag>
+        <Tag>eventos</Tag>
+        <Tag>cozinha</Tag>
+        <Tag>piscina</Tag>
+        <Tag>salão de festas</Tag>
+        <Tag>petfriendly</Tag>
+        <Tag>estacionamento</Tag>
+        <Tag>acomodações</Tag>
+        <Tag>jogos</Tag>
+        <Tag>campo de futebol</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="4">
+      <Pergunta>Onde a Wanderlust Chácara e Pousada está localizada?</Pergunta>
+      <Resposta>A Wanderlust Chácara e Pousada está localizada em Mauá, no ABC Paulista, próximo a Santo André, São Bernardo do Campo e ao lado da Zona Leste de São Paulo. Nosso endereço é Estrada Iguatemi 750 - Núcleo Dr. Carlos de Campos, Mauá - SP, CEP 09330-405. Estamos convenientemente situados ao lado do salão de eventos "Monte Castelo" e o acesso é fácil pelo Rodoanel e pela rodovia Índio Tibiriçá.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Qual o endereço da Wanderlust?</Variacao>
+        <Variacao>Como chegar na Wanderlust?</Variacao>
+        <Variacao>Pousada perto do Monte Castelo</Variacao>
+        <Variacao>Localização Mauá</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>localização</Tag>
+        <Tag>endereço</Tag>
+        <Tag>mauá</Tag>
+        <Tag>abc paulista</Tag>
+        <Tag>monte castelo</Tag>
+        <Tag>acesso</Tag>
+        <Tag>rodoanel</Tag>
+        <Tag>rodovia índio tibiriçá</Tag>
+        <Tag>proximidade</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="5">
+      <Pergunta>Como posso entrar em contato com a Wanderlust Chácara e Pousada?</Pergunta>
+      <Resposta>Você pode entrar em contato conosco através dos seguintes canais:
+- **E-mail**: chacarawanderlust@gmail.com
+- **Telefone**: (11) 9 9318-9456
+- **Instagram Pousada**: @pousada.wanderlust
+- **Instagram Chácara**: @chacara.wanderlust</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Telefone da Wanderlust</Variacao>
+        <Variacao>E-mail para contato</Variacao>
+        <Variacao>Redes sociais Wanderlust</Variacao>
+        <Variacao>Falar com Wanderlust</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>contato</Tag>
+        <Tag>telefone</Tag>
+        <Tag>email</Tag>
+        <Tag>instagram</Tag>
+        <Tag>redes sociais</Tag>
+        <Tag>atendimento</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="6">
+      <Pergunta>A Wanderlust Chácara e Pousada é petfriendly?</Pergunta>
+      <Resposta>Sim, a Chácara Wanderlust é petfriendly, permitindo que você traga seus animais de estimação para desfrutar da estadia conosco.</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso levar meu pet?</Variacao>
+        <Variacao>Aceita animais de estimação?</Variacao>
+        <Variacao>Regras para pets</Variacao>
+        <Variacao>Chácara aceita cachorro?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>petfriendly</Tag>
+        <Tag>animais de estimação</Tag>
+        <Tag>pets</Tag>
+        <Tag>política</Tag>
+        <Tag>regras</Tag>
+        <Tag>cachorro</Tag>
+        <Tag>gato</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="7">
+      <Pergunta>Qual o significado do nome "Wanderlust"?</Pergunta>
+      <Resposta>"Wanderlust" é uma palavra de origem alemã que descreve um forte desejo ou impulso de viajar e explorar o mundo. É a junção de "Wander" (vagar, perambular) e "Lust" (desejo intenso), formando a ideia de um anseio profundo por viagens, aventuras e descobertas em lugares novos. O nome reflete a paixão por viagens da proprietária, que abriu as portas de sua casa para proporcionar experiências únicas aos hóspedes.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que significa Wanderlust?</Variacao>
+        <Variacao>Origem do nome Wanderlust</Variacao>
+        <Variacao>Por que o nome Wanderlust?</Variacao>
+        <Variacao>Significado da palavra Wanderlust</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>wanderlust</Tag>
+        <Tag>significado</Tag>
+        <Tag>nome</Tag>
+        <Tag>origem</Tag>
+        <Tag>empresa</Tag>
+        <Tag>conceito</Tag>
+      </Tags>
+    </FAQ>
+  </FAQs>
+</IngestaoFAQ>
