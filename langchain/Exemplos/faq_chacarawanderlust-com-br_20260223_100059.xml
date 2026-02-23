@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='utf-8'?>
+<IngestaoFAQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Metadados>
+    <ID_Conta>chacarawanderlust-com-br</ID_Conta>
+    <ArquivoOrigem>C:\Users\bucci\Quaestum\Scrape - Copia\langchain\uploads\chacarawanderlust-com-br.md</ArquivoOrigem>
+    <TabelaDestino>marketing_rag</TabelaDestino>
+    <DataHora>2026-02-23T10:00:59.313796</DataHora>
+    <TotalFAQs>2</TotalFAQs>
+    <UsoDeTokens>
+      <LLM>
+        <Entrada>1707</Entrada>
+        <Saida>2186</Saida>
+        <Total>3893</Total>
+      </LLM>
+      <Embeddings>
+        <Estimativa>242</Estimativa>
+      </Embeddings>
+      <TotalGeral>4135</TotalGeral>
+    </UsoDeTokens>
+    <Custos>
+      <LLM_USD>$0.005977</LLM_USD>
+      <Embeddings_USD>$0.000036</Embeddings_USD>
+      <Total_USD>$0.006013</Total_USD>
+      <Total_BRL>R$0.0349</Total_BRL>
+      <Cambio>1 USD = 5.8 BRL</Cambio>
+    </Custos>
+  </Metadados>
+  <FAQs>
+    <FAQ id="1">
+      <Pergunta>Quais são as características e comodidades da Chácara Wanderlust?</Pergunta>
+      <Resposta>A Chácara Wanderlust é um local tranquilo ideal para eventos familiares e corporativos. Ela oferece:
+- Piscina
+- Campo de futebol
+- Salão de jogos
+- Acomodações para até 25 pessoas
+
+Está disponível para aluguel em fins de semana e feriados.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que a Chácara Wanderlust oferece?</Variacao>
+        <Variacao>Quais as instalações da chácara para eventos?</Variacao>
+        <Variacao>Capacidade de pessoas na Chácara Wanderlust</Variacao>
+        <Variacao>Aluguel da chácara para fins de semana</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>chácara</Tag>
+        <Tag>eventos</Tag>
+        <Tag>acomodações</Tag>
+        <Tag>piscina</Tag>
+        <Tag>campo de futebol</Tag>
+        <Tag>salão de jogos</Tag>
+        <Tag>capacidade</Tag>
+        <Tag>aluguel</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="2">
+      <Pergunta>Como posso entrar em contato com a Chácara Wanderlust?</Pergunta>
+      <Resposta>Você pode entrar em contato com a Chácara Wanderlust pelos seguintes canais:
+- **Email:** chacarawanderlust@gmail.com
+- **WhatsApp:** [https://wa.me/message/5R7D3VB2OITVI1](https://wa.me/message/5R7D3VB2OITVI1)
+- **Instagram:** [https://www.instagram.com/chacara.wanderlust](https://www.instagram.com/chacara.wanderlust)</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Quais são os contatos da Wanderlust?</Variacao>
+        <Variacao>Como falar com a chácara?</Variacao>
+        <Variacao>Email e redes sociais da chácara</Variacao>
+        <Variacao>Telefone da Wanderlust</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>contato</Tag>
+        <Tag>email</Tag>
+        <Tag>whatsapp</Tag>
+        <Tag>instagram</Tag>
+        <Tag>redes sociais</Tag>
+        <Tag>fale conosco</Tag>
+      </Tags>
+    </FAQ>
+  </FAQs>
+</IngestaoFAQ>

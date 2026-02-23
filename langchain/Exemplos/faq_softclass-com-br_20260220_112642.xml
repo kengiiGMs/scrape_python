@@ -1,0 +1,1635 @@
+<?xml version='1.0' encoding='utf-8'?>
+<IngestaoFAQ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Metadados>
+    <ID_Conta>softclass-com-br</ID_Conta>
+    <ArquivoOrigem>C:\Users\bucci\Quaestum\Scrape - Copia\langchain\uploads\softclass-com-br.md</ArquivoOrigem>
+    <TabelaDestino>marketing_rag</TabelaDestino>
+    <DataHora>2026-02-20T11:26:42.390382</DataHora>
+    <TotalFAQs>71</TotalFAQs>
+    <UsoDeTokens>
+      <LLM>
+        <Entrada>17426</Entrada>
+        <Saida>31810</Saida>
+        <Total>49236</Total>
+      </LLM>
+      <Embeddings>
+        <Estimativa>7744</Estimativa>
+      </Embeddings>
+      <TotalGeral>56980</TotalGeral>
+    </UsoDeTokens>
+  </Metadados>
+  <FAQs>
+    <FAQ id="1">
+      <Pergunta>Quais são os contatos da SOFTClass?</Pergunta>
+      <Resposta>Você pode entrar em contato com a SOFTClass pelos seguintes canais:
+*   **Email:** contato@softclass.com.br
+*   **Telefone:** (11) 4519-4664
+*   **Redes Sociais:**
+    *   Facebook: https://www.facebook.com/SOFTClassSoftware
+    *   LinkedIn: http://www.linkedin.com/company/softclass-software
+    *   YouTube: https://www.youtube.com/user/SOFTClass</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Onde encontro o telefone da SoftClass?</Variacao>
+        <Variacao>Como falar com a SoftClass?</Variacao>
+        <Variacao>Canais de comunicação SoftClass</Variacao>
+        <Variacao>Informações de contato da empresa</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>contato</Tag>
+        <Tag>telefone</Tag>
+        <Tag>email</Tag>
+        <Tag>redes sociais</Tag>
+        <Tag>softclass</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="2">
+      <Pergunta>Qual o horário de atendimento da central de suporte da SOFTClass?</Pergunta>
+      <Resposta>O horário de atendimento da central de suporte da SOFTClass é de **Segunda a sexta-feira, das 8h às 18h (horário de Brasília)**.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Até que horas o suporte da SoftClass funciona?</Variacao>
+        <Variacao>Horário de funcionamento do atendimento SoftClass</Variacao>
+        <Variacao>Quando posso ligar para o suporte?</Variacao>
+        <Variacao>Suporte técnico SoftClass horário</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>horário</Tag>
+        <Tag>atendimento</Tag>
+        <Tag>suporte</Tag>
+        <Tag>contato</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="3">
+      <Pergunta>Como abrir um chamado de suporte técnico na SOFTClass?</Pergunta>
+      <Resposta>Para obter um atendimento mais rápido e eficiente, a SOFTClass recomenda que você **abra um chamado** em sua central de suporte. Ao abrir um chamado, você receberá um número de protocolo e poderá acompanhar todo o andamento do seu atendimento.</Resposta>
+      <Categoria>How-To &amp; Configuration</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Preciso de ajuda, como solicito suporte?</Variacao>
+        <Variacao>Passo a passo para pedir assistência técnica</Variacao>
+        <Variacao>Abrir ticket de suporte SoftClass</Variacao>
+        <Variacao>Como funciona o atendimento de problemas?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>suporte</Tag>
+        <Tag>chamado</Tag>
+        <Tag>atendimento</Tag>
+        <Tag>protocolo</Tag>
+        <Tag>técnico</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="4">
+      <Pergunta>Como acessar o suporte técnico remoto da SOFTClass?</Pergunta>
+      <Resposta>Para acesso remoto, a SOFTClass utiliza o **RustDesk (suporte.exe)**.</Resposta>
+      <Categoria>Troubleshooting</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Qual programa usar para acesso remoto?</Variacao>
+        <Variacao>Ferramenta de acesso remoto SoftClass</Variacao>
+        <Variacao>Suporte remoto RustDesk</Variacao>
+        <Variacao>Como o técnico acessa meu computador?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>acesso remoto</Tag>
+        <Tag>suporte</Tag>
+        <Tag>rustdesk</Tag>
+        <Tag>suporte.exe</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="5">
+      <Pergunta>O sistema ERPClass está em conformidade com a Reforma Tributária 2025/2026?</Pergunta>
+      <Resposta>Sim, a SOFTClass está se adequando à Reforma Tributária 2025/2026 para garantir que o sistema ERPClass esteja sempre em conformidade com as novas legislações. As atualizações serão automáticas para todos os clientes, com implementação gradual conforme o cronograma oficial e suporte especializado durante a transição.</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O ERPClass já está adaptado à nova lei tributária?</Variacao>
+        <Variacao>Reforma fiscal no sistema SoftClass</Variacao>
+        <Variacao>Atualizações para a Reforma Tributária</Variacao>
+        <Variacao>Sistema ERPClass e legislação fiscal 2025</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>reforma tributária</Tag>
+        <Tag>legislação</Tag>
+        <Tag>conformidade fiscal</Tag>
+        <Tag>atualizações</Tag>
+        <Tag>2025</Tag>
+        <Tag>2026</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="6">
+      <Pergunta>Qual o valor do plano mensal do sistema ERPClass?</Pergunta>
+      <Resposta>Os planos do sistema ERPClass estão disponíveis a partir de **R$ 79,90 /mensal**.</Resposta>
+      <Categoria>Billing &amp; Account</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Quanto custa o ERPClass por mês?</Variacao>
+        <Variacao>Preço da mensalidade do sistema SoftClass</Variacao>
+        <Variacao>Planos e valores do ERPClass</Variacao>
+        <Variacao>Custo do software de gestão</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>preço</Tag>
+        <Tag>plano</Tag>
+        <Tag>mensalidade</Tag>
+        <Tag>custo</Tag>
+        <Tag>valor</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="7">
+      <Pergunta>Quais são os principais recursos do ERPClass para gestão comercial?</Pergunta>
+      <Resposta>O ERPClass oferece funcionalidades para simplificar a gestão, incluindo:
+*   **Vendas no PDV, Catálogo Online e Marketplaces:** Centralização de vendas, geração de orçamentos, controle de estoque em tempo real e relatórios detalhados.
+*   **Caixa:** Controle completo do fluxo de caixa com abertura e fechamento automático, registro de entradas e saídas, e integração com relatórios financeiros.
+*   **Controle de Estoque:** Visibilidade total da disponibilidade de produtos, acompanhamento de movimentações, inventários e relatórios estratégicos.
+*   **Controle Financeiro:** Visão detalhada de fluxo de caixa, lucros, despesas, investimentos, relatórios avançados e alertas automáticos.
+*   **Notas Fiscais:** Emissão de NF-e e NFC-e com conformidade fiscal, conexão automática à Receita Federal, templates personalizados e relatórios detalhados.
+*   **Relatórios Gerenciais e Dashboards:** Insights estratégicos com relatórios personalizáveis, dashboards interativos, visualização de performance em tempo real e exportação de dados.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User, Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que o ERPClass faz?</Variacao>
+        <Variacao>Funcionalidades do sistema de gestão SoftClass</Variacao>
+        <Variacao>Recursos do ERP para empresas</Variacao>
+        <Variacao>Visão geral das ferramentas do ERPClass</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>recursos</Tag>
+        <Tag>funcionalidades</Tag>
+        <Tag>erpclass</Tag>
+        <Tag>gestão comercial</Tag>
+        <Tag>vendas</Tag>
+        <Tag>pdv</Tag>
+        <Tag>estoque</Tag>
+        <Tag>financeiro</Tag>
+        <Tag>notas fiscais</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="8">
+      <Pergunta>Quais integrações o sistema ERPClass oferece?</Pergunta>
+      <Resposta>O sistema ERPClass oferece integrações completas com as principais plataformas do mercado, incluindo:
+*   **Marketplaces:** Sincronização automática de estoque e pedidos com múltiplos marketplaces (ex: Mercado Livre, Shopee).
+*   **TEF (Transferência Eletrônica de Fundos):** Automação de pagamentos para agilidade nas transações.
+*   **Catálogo de Produtos:** Gerenciamento de catálogo digital com atualizações em tempo real e sincronização multiplataforma.
+*   **WhatsApp:** Automação de atendimento e envio de notificações importantes para clientes.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Com quais sistemas o ERPClass se conecta?</Variacao>
+        <Variacao>Integrações disponíveis no SoftClass ERP</Variacao>
+        <Variacao>O ERPClass funciona com marketplaces?</Variacao>
+        <Variacao>Conexões do sistema de gestão</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>integrações</Tag>
+        <Tag>marketplaces</Tag>
+        <Tag>tef</Tag>
+        <Tag>catálogo de produtos</Tag>
+        <Tag>whatsapp</Tag>
+        <Tag>e-commerce</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="9">
+      <Pergunta>Como posso me tornar um revendedor SOFTClass?</Pergunta>
+      <Resposta>A SOFTClass oferece um Programa de Parcerias para revendedores. Ao se tornar um revendedor, você pode crescer oferecendo soluções completas em automação comercial, com acesso a materiais prontos, suporte técnico e comissionamento. Para mais informações, você pode procurar o botão "Quero ser um Revendedor" no site.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>Business Partner</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Quero ser parceiro da SoftClass, como faço?</Variacao>
+        <Variacao>Programa de parceria para revenda de software</Variacao>
+        <Variacao>Benefícios de ser revendedor SoftClass</Variacao>
+        <Variacao>Como vender o sistema ERPClass?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>revendedor</Tag>
+        <Tag>parceria</Tag>
+        <Tag>programa de parcerias</Tag>
+        <Tag>softclass</Tag>
+        <Tag>comissionamento</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="10">
+      <Pergunta>É possível baixar o ERPClass gratuitamente?</Pergunta>
+      <Resposta>Sim, a SOFTClass oferece a opção de **Baixar ERPClass Gratuitamente** para experimentar a solução completa de gestão empresarial.</Resposta>
+      <Categoria>General</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso testar o ERPClass de graça?</Variacao>
+        <Variacao>Download gratuito do sistema de gestão</Variacao>
+        <Variacao>Versão de teste do ERPClass</Variacao>
+        <Variacao>Como obter o ERPClass sem custo?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>download</Tag>
+        <Tag>gratuito</Tag>
+        <Tag>experimentar</Tag>
+        <Tag>erpclass</Tag>
+        <Tag>demonstração</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="11">
+      <Pergunta>Como o sistema PDV da SOFTClass ajuda no controle de vendas?</Pergunta>
+      <Resposta>O sistema PDV da SOFTClass oferece controle completo de vendas com:
+*   Vendas rápidas e intuitivas
+*   Emissão de NFC-e e SAT
+*   Controle de estoque integrado
+*   Gestão de múltiplos PDVs
+*   Relatórios em tempo real</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User, Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que o PDV da SoftClass faz para as vendas?</Variacao>
+        <Variacao>Funcionalidades de vendas do sistema PDV</Variacao>
+        <Variacao>Como o PDV controla meu estoque e notas?</Variacao>
+        <Variacao>Benefícios do PDV para o varejo</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>pdv</Tag>
+        <Tag>vendas</Tag>
+        <Tag>controle de vendas</Tag>
+        <Tag>nfc-e</Tag>
+        <Tag>sat</Tag>
+        <Tag>estoque</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="12">
+      <Pergunta>O sistema PDV da SOFTClass funciona com e-commerce e marketplaces?</Pergunta>
+      <Resposta>Sim, o sistema PDV da SOFTClass integra-se com marketplaces como Mercado Livre e Shopee, e também com WhatsApp para vendas omnichannel.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O PDV integra com loja online?</Variacao>
+        <Variacao>Posso usar o PDV para vender no Mercado Livre?</Variacao>
+        <Variacao>Conexão do PDV com Shopee e WhatsApp</Variacao>
+        <Variacao>PDV omnichannel SoftClass</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>pdv</Tag>
+        <Tag>e-commerce</Tag>
+        <Tag>marketplaces</Tag>
+        <Tag>mercado livre</Tag>
+        <Tag>shopee</Tag>
+        <Tag>whatsapp</Tag>
+        <Tag>integração</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="13">
+      <Pergunta>Como funciona a gestão fiscal no sistema PDV da SOFTClass?</Pergunta>
+      <Resposta>O sistema PDV da SOFTClass oferece gestão fiscal completa com:
+*   Emissão de cupom fiscal eletrônico
+*   Integração com SAT e NFC-e
+*   Relatórios fiscais automáticos
+*   Conformidade com a legislação</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O PDV emite cupom fiscal?</Variacao>
+        <Variacao>Conformidade fiscal do sistema PDV</Variacao>
+        <Variacao>Como o PDV lida com impostos?</Variacao>
+        <Variacao>Emissão de NFC-e e SAT no PDV</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>pdv</Tag>
+        <Tag>gestão fiscal</Tag>
+        <Tag>cupom fiscal</Tag>
+        <Tag>nfc-e</Tag>
+        <Tag>sat</Tag>
+        <Tag>legislação</Tag>
+        <Tag>impostos</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="14">
+      <Pergunta>Quais são os benefícios do sistema PDV da SOFTClass para o meu negócio?</Pergunta>
+      <Resposta>Os principais benefícios do sistema PDV da SOFTClass incluem:
+*   Redução de erros operacionais
+*   Aumento na eficiência das vendas
+*   Melhor gestão financeira
+*   Controle de estoque mais preciso
+*   Relatórios gerenciais completos</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que ganho usando o PDV da SoftClass?</Variacao>
+        <Variacao>Vantagens do sistema PDV para empresas</Variacao>
+        <Variacao>Como o PDV melhora minha loja?</Variacao>
+        <Variacao>Resultados esperados com o PDV SoftClass</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>pdv</Tag>
+        <Tag>benefícios</Tag>
+        <Tag>eficiência</Tag>
+        <Tag>gestão financeira</Tag>
+        <Tag>estoque</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="15">
+      <Pergunta>Como o sistema de vendas da SOFTClass ajuda no controle de vendas?</Pergunta>
+      <Resposta>O sistema de vendas da SOFTClass oferece controle completo de vendas com:
+*   Gestão de pedidos em tempo real
+*   Controle de comissões
+*   Acompanhamento de metas
+*   Relatórios de performance
+*   Dashboard comercial</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User, Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que o software de vendas faz?</Variacao>
+        <Variacao>Funcionalidades do sistema para vendedores</Variacao>
+        <Variacao>Como controlar pedidos e metas com o sistema de vendas?</Variacao>
+        <Variacao>Sistema de vendas SoftClass para equipe</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>sistema de vendas</Tag>
+        <Tag>controle de vendas</Tag>
+        <Tag>pedidos</Tag>
+        <Tag>comissões</Tag>
+        <Tag>metas</Tag>
+        <Tag>relatórios</Tag>
+        <Tag>dashboard</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="16">
+      <Pergunta>Como funciona o controle de comissões no sistema de vendas da SOFTClass?</Pergunta>
+      <Resposta>O sistema de vendas da SOFTClass oferece gestão completa de comissões com:
+*   Diferentes regras de comissionamento
+*   Cálculo automático
+*   Relatórios de comissões
+*   Metas por vendedor</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O sistema calcula comissão de vendedores?</Variacao>
+        <Variacao>Regras de comissionamento no software de vendas</Variacao>
+        <Variacao>Relatórios de comissões SoftClass</Variacao>
+        <Variacao>Gestão de comissões por vendedor</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>sistema de vendas</Tag>
+        <Tag>comissões</Tag>
+        <Tag>cálculo de comissão</Tag>
+        <Tag>regras de comissão</Tag>
+        <Tag>metas</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="17">
+      <Pergunta>Quais são os benefícios do sistema de vendas da SOFTClass para minha empresa?</Pergunta>
+      <Resposta>Os principais benefícios do sistema de vendas da SOFTClass incluem:
+*   Aumento das vendas
+*   Controle total do negócio
+*   Gestão eficiente da equipe
+*   Relatórios gerenciais completos</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que o sistema de vendas pode fazer pela minha empresa?</Variacao>
+        <Variacao>Vantagens do software de gestão de vendas</Variacao>
+        <Variacao>Como aumentar as vendas com o sistema SoftClass?</Variacao>
+        <Variacao>Melhorias com o sistema de vendas</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>sistema de vendas</Tag>
+        <Tag>benefícios</Tag>
+        <Tag>aumento de vendas</Tag>
+        <Tag>controle de negócio</Tag>
+        <Tag>gestão de equipe</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="18">
+      <Pergunta>Quais são os recursos essenciais do sistema SOFTClass para recebimento em Bitcoin?</Pergunta>
+      <Resposta>O sistema SOFTClass para recebimento em Bitcoin oferece:
+*   Integração com carteiras Bitcoin
+*   QR Code para pagamentos instantâneos
+*   Conversão automática para reais
+*   Gestão financeira integrada
+*   Relatórios detalhados</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que o sistema de Bitcoin oferece?</Variacao>
+        <Variacao>Funcionalidades para aceitar criptomoedas</Variacao>
+        <Variacao>Como receber pagamentos em Bitcoin no PDV?</Variacao>
+        <Variacao>Recursos do sistema de pagamentos digitais</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>bitcoin</Tag>
+        <Tag>criptomoedas</Tag>
+        <Tag>pagamentos digitais</Tag>
+        <Tag>pdv</Tag>
+        <Tag>qr code</Tag>
+        <Tag>conversão</Tag>
+        <Tag>gestão financeira</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="19">
+      <Pergunta>Quais são os benefícios de aceitar Bitcoin com o sistema SOFTClass?</Pergunta>
+      <Resposta>As vantagens de usar o sistema SOFTClass para recebimento em Bitcoin incluem:
+*   Taxas reduzidas de transação
+*   Pagamentos instantâneos
+*   Sem risco de chargebacks
+*   Alcance de novo público
+*   Diferencial competitivo</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Por que devo aceitar Bitcoin na minha loja?</Variacao>
+        <Variacao>Vantagens de pagamentos com criptomoedas</Variacao>
+        <Variacao>Benefícios do sistema Bitcoin para comércios</Variacao>
+        <Variacao>Aceitar Bitcoin reduz taxas?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>bitcoin</Tag>
+        <Tag>benefícios</Tag>
+        <Tag>taxas</Tag>
+        <Tag>pagamentos instantâneos</Tag>
+        <Tag>chargebacks</Tag>
+        <Tag>novo público</Tag>
+        <Tag>diferencial</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="20">
+      <Pergunta>O sistema SOFTClass para recebimento em Bitcoin é seguro e está em conformidade?</Pergunta>
+      <Resposta>Sim, o sistema SOFTClass para recebimento em Bitcoin oferece:
+*   Criptografia avançada
+*   Backup automático
+*   Conformidade regulatória
+*   Suporte especializado
+*   Atualizações constantes</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>É seguro aceitar Bitcoin com o sistema?</Variacao>
+        <Variacao>O sistema de criptomoedas segue as leis?</Variacao>
+        <Variacao>Segurança do sistema de pagamentos Bitcoin</Variacao>
+        <Variacao>Conformidade regulatória para Bitcoin</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>bitcoin</Tag>
+        <Tag>segurança</Tag>
+        <Tag>conformidade</Tag>
+        <Tag>criptografia</Tag>
+        <Tag>backup</Tag>
+        <Tag>regulatório</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="21">
+      <Pergunta>Como o sistema para adega da SOFTClass ajuda no controle de estoque?</Pergunta>
+      <Resposta>O sistema para adega da SOFTClass oferece controle preciso de estoque com:
+*   Controle de validade de produtos
+*   Alertas automáticos de reposição
+*   Gestão de lotes e séries
+*   Inventário em tempo real</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como gerenciar o estoque da adega com o sistema?</Variacao>
+        <Variacao>Funcionalidades de estoque para lojas de bebidas</Variacao>
+        <Variacao>Controle de validade e lotes na adega</Variacao>
+        <Variacao>Sistema para adega evita falta de produtos?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>adega</Tag>
+        <Tag>estoque</Tag>
+        <Tag>controle de estoque</Tag>
+        <Tag>validade</Tag>
+        <Tag>reposição</Tag>
+        <Tag>lotes</Tag>
+        <Tag>inventário</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="22">
+      <Pergunta>Quais são os benefícios do sistema para adega da SOFTClass?</Pergunta>
+      <Resposta>Os principais benefícios do sistema para adega da SOFTClass incluem:
+*   Redução de perdas e desperdícios
+*   Aumento na eficiência operacional
+*   Melhor gestão financeira
+*   Controle de vendas mais preciso
+*   Relatórios gerenciais completos</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O que o sistema de adega pode fazer pelo meu negócio?</Variacao>
+        <Variacao>Vantagens do software para gestão de bebidas</Variacao>
+        <Variacao>Como o sistema de adega melhora a operação?</Variacao>
+        <Variacao>Redução de perdas na adega com o sistema</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>adega</Tag>
+        <Tag>benefícios</Tag>
+        <Tag>perdas</Tag>
+        <Tag>desperdícios</Tag>
+        <Tag>eficiência</Tag>
+        <Tag>gestão financeira</Tag>
+        <Tag>vendas</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="23">
+      <Pergunta>O sistema para adega da SOFTClass funciona com delivery?</Pergunta>
+      <Resposta>Sim, o sistema para adega da SOFTClass inclui funcionalidades completas para delivery:
+*   Gestão de pedidos online
+*   Controle de entregas
+*   Rastreamento de pedidos</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso gerenciar entregas de bebidas com o sistema?</Variacao>
+        <Variacao>Sistema de adega tem funcionalidade de delivery?</Variacao>
+        <Variacao>Controle de pedidos online para adega</Variacao>
+        <Variacao>Rastreamento de entregas de bebidas</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>adega</Tag>
+        <Tag>delivery</Tag>
+        <Tag>entregas</Tag>
+        <Tag>pedidos online</Tag>
+        <Tag>rastreamento</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="24">
+      <Pergunta>Como funciona o controle de vendas no sistema para adega da SOFTClass?</Pergunta>
+      <Resposta>O sistema para adega da SOFTClass oferece controle completo de vendas:
+*   Vendas no balcão e delivery
+*   Múltiplas formas de pagamento
+*   Controle de comissões
+*   Gestão de promoções
+*   Relatórios de vendas detalhados</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como o sistema de adega gerencia minhas vendas?</Variacao>
+        <Variacao>Vendas no balcão e delivery para adegas</Variacao>
+        <Variacao>Controle de promoções e comissões de vendas de bebidas</Variacao>
+        <Variacao>Relatórios de vendas para adega</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>adega</Tag>
+        <Tag>vendas</Tag>
+        <Tag>controle de vendas</Tag>
+        <Tag>balcão</Tag>
+        <Tag>delivery</Tag>
+        <Tag>pagamentos</Tag>
+        <Tag>comissões</Tag>
+        <Tag>promoções</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="25">
+      <Pergunta>O sistema para adega da SOFTClass emite notas fiscais?</Pergunta>
+      <Resposta>Sim, o sistema para adega da SOFTClass inclui:
+*   Emissão de NFC-e
+*   Emissão de SAT
+*   Controle de impostos
+*   Relatórios fiscais
+*   Integração com contabilidade</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O sistema de adega gera NFC-e?</Variacao>
+        <Variacao>Emissão de documentos fiscais para lojas de bebidas</Variacao>
+        <Variacao>Controle de impostos no sistema para adega</Variacao>
+        <Variacao>Integração contábil do sistema de adega</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>adega</Tag>
+        <Tag>notas fiscais</Tag>
+        <Tag>nfc-e</Tag>
+        <Tag>sat</Tag>
+        <Tag>impostos</Tag>
+        <Tag>relatórios fiscais</Tag>
+        <Tag>contabilidade</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="26">
+      <Pergunta>O que é um sistema para autopeças?</Pergunta>
+      <Resposta>Um sistema para autopeças é um software de gestão completo que ajuda lojas a controlarem vendas, estoque, emissão fiscal, orçamentos e atendimentos. Ele centraliza todas as operações da loja em uma única plataforma, otimizando processos e reduzindo erros.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Para que serve um software de autopeças?</Variacao>
+        <Variacao>Definição de sistema de gestão para lojas de peças</Variacao>
+        <Variacao>O que faz um ERP para autopeças?</Variacao>
+        <Variacao>Sistema para controle de loja de autopeças</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>sistema</Tag>
+        <Tag>software</Tag>
+        <Tag>gestão</Tag>
+        <Tag>vendas</Tag>
+        <Tag>estoque</Tag>
+        <Tag>fiscal</Tag>
+        <Tag>orçamentos</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="27">
+      <Pergunta>Como o ERPClass ajuda na gestão de uma loja de autopeças?</Pergunta>
+      <Resposta>O ERPClass oferece uma solução prática e eficiente para o dia a dia da autopeças com:
+*   Controle de estoque em tempo real
+*   Cadastro inteligente de produtos
+*   Emissão de notas fiscais
+*   Controle financeiro
+*   Devoluções
+*   Geração de orçamentos
+Tudo em um sistema simples e integrado.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Quais as vantagens do ERPClass para autopeças?</Variacao>
+        <Variacao>Como o sistema SoftClass organiza minha loja de peças?</Variacao>
+        <Variacao>Funcionalidades do ERPClass para o setor automotivo</Variacao>
+        <Variacao>O ERPClass gerencia estoque e finanças de autopeças?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>erpclass</Tag>
+        <Tag>gestão</Tag>
+        <Tag>estoque</Tag>
+        <Tag>produtos</Tag>
+        <Tag>notas fiscais</Tag>
+        <Tag>financeiro</Tag>
+        <Tag>devoluções</Tag>
+        <Tag>orçamentos</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="28">
+      <Pergunta>É possível gerar um catálogo online com fotos e preços para clientes no ERPClass para autopeças?</Pergunta>
+      <Resposta>Sim. O ERPClass permite criar um catálogo online integrado ao cadastro de produtos, com fotos, descrições e preços. Você pode compartilhar um link com o cliente, que pode visualizar as peças e até realizar pedidos diretamente por esse catálogo, que já está conectado ao sistema.</Resposta>
+      <Categoria>How-To &amp; Configuration</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso criar um catálogo digital de peças?</Variacao>
+        <Variacao>Como enviar catálogo de produtos para clientes?</Variacao>
+        <Variacao>Catálogo online de autopeças com o ERPClass</Variacao>
+        <Variacao>Sistema para autopeças gera pedidos online?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>catálogo online</Tag>
+        <Tag>fotos</Tag>
+        <Tag>preços</Tag>
+        <Tag>pedidos</Tag>
+        <Tag>e-commerce</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="29">
+      <Pergunta>O sistema ERPClass para autopeças emite nota fiscal eletrônica (NFe)?</Pergunta>
+      <Resposta>Sim. O ERPClass realiza a emissão de notas fiscais eletrônicas (NFe) e cupons fiscais (SAT) de forma simples e direta, tanto no PDV quanto nos pedidos, atendendo todas as exigências fiscais.</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O ERPClass gera NFe para autopeças?</Variacao>
+        <Variacao>Emissão de cupom fiscal para loja de peças</Variacao>
+        <Variacao>Conformidade fiscal do ERPClass para autopeças</Variacao>
+        <Variacao>Sistema para autopeças emite SAT?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>nfe</Tag>
+        <Tag>nota fiscal eletrônica</Tag>
+        <Tag>cupom fiscal</Tag>
+        <Tag>sat</Tag>
+        <Tag>emissão fiscal</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="30">
+      <Pergunta>O sistema ERPClass para autopeças permite cadastrar peças com múltiplas aplicações?</Pergunta>
+      <Resposta>Sim. É possível cadastrar peças com diversas variações, como modelos de veículos compatíveis, marcas, versões e outras informações técnicas. Isso facilita a busca e o atendimento preciso ao cliente.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso cadastrar uma peça para vários carros?</Variacao>
+        <Variacao>Gestão de compatibilidade de peças no ERPClass</Variacao>
+        <Variacao>Cadastro de peças com variações de veículos</Variacao>
+        <Variacao>Como o sistema lida com aplicações de peças?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>cadastro de peças</Tag>
+        <Tag>múltiplas aplicações</Tag>
+        <Tag>veículos</Tag>
+        <Tag>marcas</Tag>
+        <Tag>informações técnicas</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="31">
+      <Pergunta>Como funciona a devolução de produtos no ERPClass para autopeças?</Pergunta>
+      <Resposta>As devoluções no ERPClass são simples e seguras. Você pode devolver produtos por pedido, identificando o cliente e gerando um reembolso ou voucher de crédito. Também é possível devolver apenas o produto, sem precisar localizar o cliente.</Resposta>
+      <Categoria>How-To &amp; Configuration</Categoria>
+      <Audiencia>End-User, Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como fazer uma devolução de peça no sistema?</Variacao>
+        <Variacao>Processo de troca ou reembolso de autopeças</Variacao>
+        <Variacao>Devolução de produtos sem cliente no ERPClass</Variacao>
+        <Variacao>Gestão de devoluções de autopeças</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>devolução</Tag>
+        <Tag>produtos</Tag>
+        <Tag>reembolso</Tag>
+        <Tag>voucher de crédito</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="32">
+      <Pergunta>Consigo emitir orçamentos e enviar para os clientes com o ERPClass para autopeças?</Pergunta>
+      <Resposta>Sim. O ERPClass permite gerar orçamentos personalizados com os dados do cliente e os itens cotados. Eles podem ser impressos, enviados por e-mail ou WhatsApp com um clique, facilitando o processo de venda.</Resposta>
+      <Categoria>How-To &amp; Configuration</Categoria>
+      <Audiencia>End-User, Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso fazer orçamento de peças no sistema?</Variacao>
+        <Variacao>Como enviar orçamentos por WhatsApp para clientes?</Variacao>
+        <Variacao>Geração de orçamentos personalizados para autopeças</Variacao>
+        <Variacao>Sistema para autopeças faz cotação?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>orçamentos</Tag>
+        <Tag>emissão</Tag>
+        <Tag>email</Tag>
+        <Tag>whatsapp</Tag>
+        <Tag>vendas</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="33">
+      <Pergunta>O sistema ERPClass para autopeças possui PDV para vendas rápidas no balcão?</Pergunta>
+      <Resposta>Sim. O ERPClass possui uma tela de PDV (Ponto de Venda) ágil e intuitiva, que permite realizar vendas com ou sem emissão fiscal de forma rápida, ideal para atendimento em balcão de autopeças.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O ERPClass tem PDV para loja de peças?</Variacao>
+        <Variacao>Vendas rápidas no balcão de autopeças</Variacao>
+        <Variacao>PDV intuitivo para o setor automotivo</Variacao>
+        <Variacao>Sistema para autopeças com frente de caixa</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>pdv</Tag>
+        <Tag>ponto de venda</Tag>
+        <Tag>vendas rápidas</Tag>
+        <Tag>balcão</Tag>
+        <Tag>emissão fiscal</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="34">
+      <Pergunta>O ERPClass oferece controle financeiro completo para lojas de autopeças?</Pergunta>
+      <Resposta>Sim. Você pode controlar contas a pagar e a receber, organizar o fluxo de caixa, visualizar relatórios financeiros e conciliar lançamentos, garantindo o controle total das finanças da sua loja de autopeças.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O sistema gerencia as finanças da minha loja de peças?</Variacao>
+        <Variacao>Controle de contas a pagar e receber para autopeças</Variacao>
+        <Variacao>Fluxo de caixa e relatórios financeiros no ERPClass</Variacao>
+        <Variacao>Gestão financeira para o setor automotivo</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>controle financeiro</Tag>
+        <Tag>contas a pagar</Tag>
+        <Tag>contas a receber</Tag>
+        <Tag>fluxo de caixa</Tag>
+        <Tag>relatórios financeiros</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="35">
+      <Pergunta>O ERPClass para autopeças tem integração com marketplaces como Mercado Livre e Shopee?</Pergunta>
+      <Resposta>Sim. O ERPClass permite integrar sua loja de autopeças com Mercado Livre, Shopee e outros marketplaces, facilitando a gestão de estoque, pedidos e atualização automática de preços e descrições entre o sistema e as plataformas de venda online.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso integrar minha loja de autopeças com marketplaces?</Variacao>
+        <Variacao>ERPClass conecta com Mercado Livre para peças?</Variacao>
+        <Variacao>Sincronização de estoque de autopeças com Shopee</Variacao>
+        <Variacao>Integração e-commerce para autopeças</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>autopeças</Tag>
+        <Tag>integração</Tag>
+        <Tag>marketplaces</Tag>
+        <Tag>mercado livre</Tag>
+        <Tag>shopee</Tag>
+        <Tag>estoque</Tag>
+        <Tag>pedidos</Tag>
+        <Tag>e-commerce</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="36">
+      <Pergunta>O que é um sistema para depósito de material de construção?</Pergunta>
+      <Resposta>Um sistema para depósito de material de construção é um software de gestão completo que ajuda depósitos e lojas a controlarem vendas, estoque, entregas, orçamentos e atendimentos. Ele centraliza todas as operações do negócio em uma única plataforma, otimizando processos e reduzindo erros.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Para que serve um software para loja de construção?</Variacao>
+        <Variacao>Definição de sistema de gestão para materiais de construção</Variacao>
+        <Variacao>O que faz um ERP para depósito de construção?</Variacao>
+        <Variacao>Sistema para controle de loja de materiais</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>material de construção</Tag>
+        <Tag>depósito</Tag>
+        <Tag>sistema</Tag>
+        <Tag>software</Tag>
+        <Tag>gestão</Tag>
+        <Tag>vendas</Tag>
+        <Tag>estoque</Tag>
+        <Tag>entregas</Tag>
+        <Tag>orçamentos</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="37">
+      <Pergunta>Como o ERPClass ajuda na gestão de um depósito de material de construção?</Pergunta>
+      <Resposta>O ERPClass oferece uma solução prática e eficiente para o dia a dia do depósito de material de construção com:
+*   Controle de estoque em tempo real
+*   Cadastro inteligente de produtos
+*   Emissão de notas fiscais
+*   Controle financeiro
+*   Gestão de entregas
+*   Geração de orçamentos
+Tudo em um sistema simples e integrado.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Quais as vantagens do ERPClass para material de construção?</Variacao>
+        <Variacao>Como o sistema SoftClass organiza meu depósito?</Variacao>
+        <Variacao>Funcionalidades do ERPClass para o setor de construção</Variacao>
+        <Variacao>O ERPClass gerencia estoque e entregas de materiais?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>material de construção</Tag>
+        <Tag>erpclass</Tag>
+        <Tag>gestão</Tag>
+        <Tag>estoque</Tag>
+        <Tag>produtos</Tag>
+        <Tag>notas fiscais</Tag>
+        <Tag>financeiro</Tag>
+        <Tag>entregas</Tag>
+        <Tag>orçamentos</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="38">
+      <Pergunta>É possível controlar entregas e fretes no sistema ERPClass para depósito de material de construção?</Pergunta>
+      <Resposta>Sim. O ERPClass permite gerenciar todo o processo de entrega, desde o agendamento até a confirmação. Você pode controlar fretes, roteirizar entregas, acompanhar o status em tempo real e gerar relatórios de desempenho da logística.</Resposta>
+      <Categoria>How-To &amp; Configuration</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O sistema gerencia a logística de entregas de materiais?</Variacao>
+        <Variacao>Como roteirizar entregas de material de construção?</Variacao>
+        <Variacao>Controle de fretes no ERPClass para depósitos</Variacao>
+        <Variacao>Rastreamento de entregas de materiais</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>material de construção</Tag>
+        <Tag>entregas</Tag>
+        <Tag>fretes</Tag>
+        <Tag>logística</Tag>
+        <Tag>agendamento</Tag>
+        <Tag>roteirização</Tag>
+        <Tag>rastreamento</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="39">
+      <Pergunta>O sistema ERPClass para depósito de material de construção emite nota fiscal eletrônica (NFe)?</Pergunta>
+      <Resposta>Sim. O ERPClass realiza a emissão de notas fiscais eletrônicas (NFe) e cupons fiscais (SAT) de forma simples e direta, tanto no PDV quanto nos pedidos, atendendo todas as exigências fiscais.</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O ERPClass gera NFe para material de construção?</Variacao>
+        <Variacao>Emissão de cupom fiscal para loja de construção</Variacao>
+        <Variacao>Conformidade fiscal do ERPClass para depósitos</Variacao>
+        <Variacao>Sistema para material de construção emite SAT?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>material de construção</Tag>
+        <Tag>nfe</Tag>
+        <Tag>nota fiscal eletrônica</Tag>
+        <Tag>cupom fiscal</Tag>
+        <Tag>sat</Tag>
+        <Tag>emissão fiscal</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="40">
+      <Pergunta>Como funciona o controle de estoque no sistema?</Pergunta>
+      <Resposta>O sistema oferece controle completo do estoque com alertas de estoque mínimo, controle de lotes, rastreamento de produtos, inventário periódico e relatórios detalhados. Você pode acompanhar em tempo real a movimentação de cada produto.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como gerenciar o estoque?</Variacao>
+        <Variacao>Recursos de controle de estoque</Variacao>
+        <Variacao>Monitoramento de produtos em tempo real</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>estoque</Tag>
+        <Tag>controle</Tag>
+        <Tag>alertas</Tag>
+        <Tag>lotes</Tag>
+        <Tag>rastreamento</Tag>
+        <Tag>inventário</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="41">
+      <Pergunta>O sistema permite gerar orçamentos para clientes?</Pergunta>
+      <Resposta>Sim. O ERPClass permite criar orçamentos detalhados com todos os produtos, quantidades, preços e condições de pagamento. Os orçamentos podem ser impressos, enviados por e-mail ou WhatsApp, e convertidos em pedidos com um clique.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso fazer orçamentos no sistema?</Variacao>
+        <Variacao>Como criar propostas de venda?</Variacao>
+        <Variacao>Funcionalidade de orçamento</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>orçamentos</Tag>
+        <Tag>clientes</Tag>
+        <Tag>pedidos</Tag>
+        <Tag>e-mail</Tag>
+        <Tag>whatsapp</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="42">
+      <Pergunta>Como funciona o controle de fornecedores?</Pergunta>
+      <Resposta>O sistema mantém um cadastro completo de fornecedores com histórico de compras, preços praticados, prazos de entrega e avaliações. Você pode gerar pedidos de compra, acompanhar entregas e manter um relacionamento mais eficiente com seus fornecedores.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como gerenciar fornecedores?</Variacao>
+        <Variacao>Recursos para fornecedores</Variacao>
+        <Variacao>Controle de compras e entregas</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>fornecedores</Tag>
+        <Tag>controle</Tag>
+        <Tag>cadastro</Tag>
+        <Tag>histórico</Tag>
+        <Tag>pedidos de compra</Tag>
+        <Tag>entregas</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="43">
+      <Pergunta>O sistema possui PDV para vendas rápidas?</Pergunta>
+      <Resposta>Sim. O ERPClass possui uma tela de PDV (Ponto de Venda) ágil e intuitiva, que permite realizar vendas com ou sem emissão fiscal de forma rápida, ideal para atendimento em balcão de depósito de material de construção.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Tem caixa rápido no sistema?</Variacao>
+        <Variacao>Funcionalidade de PDV</Variacao>
+        <Variacao>Vendas no balcão</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>PDV</Tag>
+        <Tag>ponto de venda</Tag>
+        <Tag>vendas rápidas</Tag>
+        <Tag>emissão fiscal</Tag>
+        <Tag>balcão</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="44">
+      <Pergunta>É possível controlar comissões de vendedores?</Pergunta>
+      <Resposta>Sim. O sistema permite configurar diferentes regras de comissão por vendedor, produto ou categoria. Você pode acompanhar o desempenho de cada vendedor, calcular comissões automaticamente e gerar relatórios detalhados.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como calcular comissão de vendas?</Variacao>
+        <Variacao>Controle de comissão de vendedores</Variacao>
+        <Variacao>Gerenciamento de comissões</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>comissões</Tag>
+        <Tag>vendedores</Tag>
+        <Tag>regras</Tag>
+        <Tag>desempenho</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="45">
+      <Pergunta>O sistema oferece relatórios gerenciais?</Pergunta>
+      <Resposta>Sim. O ERPClass oferece diversos relatórios gerenciais como vendas por período, produtos mais vendidos, margem de lucro, desempenho de vendedores, análise de estoque e fluxo de caixa. Todos os relatórios podem ser personalizados e exportados em diferentes formatos.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Quais relatórios o sistema gera?</Variacao>
+        <Variacao>Relatórios de gestão disponíveis</Variacao>
+        <Variacao>Análises de desempenho do negócio</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>relatórios</Tag>
+        <Tag>gerenciais</Tag>
+        <Tag>vendas</Tag>
+        <Tag>produtos</Tag>
+        <Tag>lucro</Tag>
+        <Tag>estoque</Tag>
+        <Tag>fluxo de caixa</Tag>
+        <Tag>personalização</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="46">
+      <Pergunta>O que é o sistema para açougue da SOFTClass?</Pergunta>
+      <Resposta>O sistema para açougue da SOFTClass é uma solução completa e eficiente, desenvolvida especificamente para o setor de carnes. Ele simplifica a gestão do negócio, oferecendo controle total sobre vendas, estoque e financeiro.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Qual o software para açougue?</Variacao>
+        <Variacao>Para que serve o sistema de açougue?</Variacao>
+        <Variacao>Solução de gestão para açougues</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>açougue</Tag>
+        <Tag>sistema</Tag>
+        <Tag>software</Tag>
+        <Tag>gestão</Tag>
+        <Tag>SOFTClass</Tag>
+        <Tag>carnes</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="47">
+      <Pergunta>Como o sistema para açougue gerencia vendas e pedidos?</Pergunta>
+      <Resposta>O sistema para açougue maximiza suas vendas com um PDV ágil e intuitivo, registro de pedidos, histórico de compras dos clientes e promoções personalizadas.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como vender mais no açougue com o sistema?</Variacao>
+        <Variacao>Funcionalidades de vendas para açougue</Variacao>
+        <Variacao>Gestão de pedidos de clientes</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>açougue</Tag>
+        <Tag>vendas</Tag>
+        <Tag>pedidos</Tag>
+        <Tag>PDV</Tag>
+        <Tag>histórico de clientes</Tag>
+        <Tag>promoções</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="48">
+      <Pergunta>Como o sistema para açougue ajuda no controle de fornecedores?</Pergunta>
+      <Resposta>O sistema para açougue facilita o gerenciamento de fornecedores através do registro de pedidos, avaliação de prazos de entrega, comparação de preços e escolha dos melhores parceiros, garantindo um fluxo constante de produtos.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como gerenciar fornecedores no açougue?</Variacao>
+        <Variacao>Sistema para controle de compras de açougue</Variacao>
+        <Variacao>Escolha de fornecedores</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>açougue</Tag>
+        <Tag>fornecedores</Tag>
+        <Tag>controle</Tag>
+        <Tag>pedidos</Tag>
+        <Tag>prazos</Tag>
+        <Tag>preços</Tag>
+        <Tag>parceiros</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="49">
+      <Pergunta>Quais relatórios e análises o sistema para açougue oferece?</Pergunta>
+      <Resposta>O sistema para açougue oferece relatórios detalhados que fornecem insights sobre o desempenho, produtos com maior saída, avaliação de margens de lucro e dados concretos para decisões estratégicas.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Relatórios gerenciais para açougue</Variacao>
+        <Variacao>Análise de vendas de açougue</Variacao>
+        <Variacao>Dados para tomada de decisão</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>açougue</Tag>
+        <Tag>relatórios</Tag>
+        <Tag>análises</Tag>
+        <Tag>desempenho</Tag>
+        <Tag>produtos mais vendidos</Tag>
+        <Tag>margem de lucro</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="50">
+      <Pergunta>Como o sistema ajuda no controle de estoque do açougue?</Pergunta>
+      <Resposta>O sistema oferece controle completo de estoque com: controle de validade dos produtos, controle de desperdícios, alertas de reposição e inventário em tempo real.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como o sistema gerencia o estoque do açougue?</Variacao>
+        <Variacao>Recursos de estoque para açougue</Variacao>
+        <Variacao>Controle de validade de carnes</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>açougue</Tag>
+        <Tag>estoque</Tag>
+        <Tag>controle</Tag>
+        <Tag>validade</Tag>
+        <Tag>desperdícios</Tag>
+        <Tag>reposição</Tag>
+        <Tag>inventário</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="51">
+      <Pergunta>O sistema para açougue possui balança integrada?</Pergunta>
+      <Resposta>Sim, o sistema oferece integração com balanças, sendo compatível com as principais marcas. Permite pesagem automática, precificação por peso e controle de margens.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Posso usar balança no sistema de açougue?</Variacao>
+        <Variacao>Sistema de açougue com balança</Variacao>
+        <Variacao>Integração com balanças de açougue</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>açougue</Tag>
+        <Tag>balança</Tag>
+        <Tag>integração</Tag>
+        <Tag>pesagem</Tag>
+        <Tag>precificação</Tag>
+        <Tag>margens</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="52">
+      <Pergunta>Quais são os benefícios do sistema para meu açougue?</Pergunta>
+      <Resposta>Os principais benefícios incluem: redução de desperdícios, controle total do negócio, gestão eficiente do estoque e relatórios gerenciais completos.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Vantagens do sistema para açougue</Variacao>
+        <Variacao>O que o sistema faz pelo meu açougue?</Variacao>
+        <Variacao>Por que usar o sistema no açougue?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>açougue</Tag>
+        <Tag>benefícios</Tag>
+        <Tag>desperdícios</Tag>
+        <Tag>controle</Tag>
+        <Tag>gestão</Tag>
+        <Tag>estoque</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="53">
+      <Pergunta>O que é o sistema para floricultura da SOFTClass?</Pergunta>
+      <Resposta>O sistema para floricultura da SOFTClass é uma solução completa que revoluciona a gestão do seu negócio, combinando tecnologia e funcionalidades específicas para o setor de flores e plantas. Ele simplifica a gestão, oferecendo controle total sobre vendas, estoque e financeiro.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Qual o software para floricultura?</Variacao>
+        <Variacao>Para que serve o sistema de floricultura?</Variacao>
+        <Variacao>Solução de gestão para floriculturas</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>floricultura</Tag>
+        <Tag>sistema</Tag>
+        <Tag>software</Tag>
+        <Tag>gestão</Tag>
+        <Tag>SOFTClass</Tag>
+        <Tag>flores</Tag>
+        <Tag>plantas</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="54">
+      <Pergunta>Como o sistema para floricultura simplifica a gestão?</Pergunta>
+      <Resposta>Com o sistema para floricultura, você terá: controle completo de estoque, gestão de vendas, acompanhamento de demandas sazonais, operações práticas e inteligentes, e controle financeiro integrado.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como o sistema ajuda na gestão da floricultura?</Variacao>
+        <Variacao>Recursos de gestão para floricultura</Variacao>
+        <Variacao>Simplificar gestão de floricultura</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>floricultura</Tag>
+        <Tag>gestão</Tag>
+        <Tag>estoque</Tag>
+        <Tag>vendas</Tag>
+        <Tag>sazonalidade</Tag>
+        <Tag>financeiro</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="55">
+      <Pergunta>Como o sistema para floricultura ajuda no atendimento personalizado?</Pergunta>
+      <Resposta>O sistema para floricultura maximiza seu atendimento com cadastro de preferências dos clientes, histórico de compras, estratégias de fidelização e criação de experiências únicas para garantir a satisfação.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como personalizar o atendimento na floricultura?</Variacao>
+        <Variacao>Sistema para fidelizar clientes de floricultura</Variacao>
+        <Variacao>Gestão de clientes floricultura</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>floricultura</Tag>
+        <Tag>atendimento</Tag>
+        <Tag>clientes</Tag>
+        <Tag>fidelização</Tag>
+        <Tag>histórico</Tag>
+        <Tag>preferências</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="56">
+      <Pergunta>Como o sistema ajuda na gestão de datas comemorativas da floricultura?</Pergunta>
+      <Resposta>Nosso sistema oferece gestão completa de datas especiais com: calendário de datas comemorativas, lembretes automáticos via WhatsApp, campanhas personalizadas, gestão de encomendas antecipadas e controle de entregas programadas.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como o sistema gerencia datas especiais na floricultura?</Variacao>
+        <Variacao>Recursos para datas festivas</Variacao>
+        <Variacao>Lembretes de datas importantes para floricultura</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>floricultura</Tag>
+        <Tag>datas comemorativas</Tag>
+        <Tag>calendário</Tag>
+        <Tag>whatsapp</Tag>
+        <Tag>campanhas</Tag>
+        <Tag>encomendas</Tag>
+        <Tag>entregas</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="57">
+      <Pergunta>O sistema para floricultura funciona com WhatsApp?</Pergunta>
+      <Resposta>Sim, nosso sistema integra-se com WhatsApp para: lembretes de datas especiais, confirmação de pedidos, status de entrega, promoções exclusivas e comunicação com clientes.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Tem integração com WhatsApp na floricultura?</Variacao>
+        <Variacao>Sistema de floricultura com WhatsApp</Variacao>
+        <Variacao>Enviar mensagens pelo WhatsApp</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>floricultura</Tag>
+        <Tag>whatsapp</Tag>
+        <Tag>integração</Tag>
+        <Tag>lembretes</Tag>
+        <Tag>pedidos</Tag>
+        <Tag>entregas</Tag>
+        <Tag>promoções</Tag>
+        <Tag>comunicação</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="58">
+      <Pergunta>Como funciona o controle de estoque na floricultura?</Pergunta>
+      <Resposta>O sistema oferece controle completo de estoque com: controle de validade de flores, gestão de fornecedores, alertas de estoque baixo, controle de perdas e inventário em tempo real.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como o sistema gerencia o estoque da floricultura?</Variacao>
+        <Variacao>Recursos de estoque para floricultura</Variacao>
+        <Variacao>Controle de perdas de flores</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>floricultura</Tag>
+        <Tag>estoque</Tag>
+        <Tag>controle</Tag>
+        <Tag>validade</Tag>
+        <Tag>fornecedores</Tag>
+        <Tag>alertas</Tag>
+        <Tag>perdas</Tag>
+        <Tag>inventário</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="59">
+      <Pergunta>Quais são os benefícios do sistema para minha floricultura?</Pergunta>
+      <Resposta>Os principais benefícios incluem: redução de perdas e desperdícios, aumento na eficiência operacional, melhor gestão financeira, controle de vendas mais preciso e relatórios gerenciais completos.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Vantagens do sistema para floricultura</Variacao>
+        <Variacao>O que o sistema faz pela minha floricultura?</Variacao>
+        <Variacao>Por que usar o sistema na floricultura?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>floricultura</Tag>
+        <Tag>benefícios</Tag>
+        <Tag>perdas</Tag>
+        <Tag>desperdícios</Tag>
+        <Tag>eficiência</Tag>
+        <Tag>gestão financeira</Tag>
+        <Tag>vendas</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="60">
+      <Pergunta>O que é o sistema para drogaria da SOFTClass?</Pergunta>
+      <Resposta>O sistema para drogaria da SOFTClass é uma solução completa desenvolvida para atender às necessidades específicas do setor farmacêutico, oferecendo controle total sobre estoque, vendas, medicamentos controlados e conformidade com as normas sanitárias.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Qual o software para drogaria?</Variacao>
+        <Variacao>Para que serve o sistema de drogaria?</Variacao>
+        <Variacao>Solução de gestão para drogarias</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>drogaria</Tag>
+        <Tag>sistema</Tag>
+        <Tag>software</Tag>
+        <Tag>gestão</Tag>
+        <Tag>SOFTClass</Tag>
+        <Tag>farmacêutico</Tag>
+        <Tag>medicamentos controlados</Tag>
+        <Tag>normas sanitárias</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="61">
+      <Pergunta>Como o sistema para drogaria ajuda na gestão de documentos e conformidade?</Pergunta>
+      <Resposta>Com o sistema para drogaria, você terá total controle sobre a documentação, incluindo integração com SNGPC, controle de receitas médicas, gestão de documentos sanitários e relatórios para vigilância sanitária.</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>Admin</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>O sistema ajuda com a vigilância sanitária?</Variacao>
+        <Variacao>Controle de receitas médicas no sistema</Variacao>
+        <Variacao>Relatórios para SNGPC</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>drogaria</Tag>
+        <Tag>documentos</Tag>
+        <Tag>conformidade</Tag>
+        <Tag>SNGPC</Tag>
+        <Tag>receitas médicas</Tag>
+        <Tag>vigilância sanitária</Tag>
+        <Tag>normas</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="62">
+      <Pergunta>Como o sistema ajuda no controle de estoque da drogaria?</Pergunta>
+      <Resposta>Nosso sistema oferece controle completo de estoque com: cadastro detalhado de medicamentos, controle de validade, alertas de estoque mínimo, gestão de fornecedores e controle de lote.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como o sistema gerencia o estoque da drogaria?</Variacao>
+        <Variacao>Recursos de estoque para drogaria</Variacao>
+        <Variacao>Controle de validade de medicamentos</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>drogaria</Tag>
+        <Tag>estoque</Tag>
+        <Tag>controle</Tag>
+        <Tag>medicamentos</Tag>
+        <Tag>validade</Tag>
+        <Tag>alertas</Tag>
+        <Tag>fornecedores</Tag>
+        <Tag>lote</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="63">
+      <Pergunta>O sistema para drogaria controla medicamentos controlados?</Pergunta>
+      <Resposta>Sim, o sistema oferece gestão completa de medicamentos controlados com: controle de receitas, integração com SNGPC, relatórios para vigilância sanitária e controle de estoque específico.</Resposta>
+      <Categoria>Policies &amp; Compliance</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como gerenciar medicamentos controlados?</Variacao>
+        <Variacao>Sistema para controle de remédios controlados</Variacao>
+        <Variacao>Integração SNGPC</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>drogaria</Tag>
+        <Tag>medicamentos controlados</Tag>
+        <Tag>receitas</Tag>
+        <Tag>SNGPC</Tag>
+        <Tag>vigilância sanitária</Tag>
+        <Tag>estoque</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="64">
+      <Pergunta>Como funciona o controle financeiro da drogaria?</Pergunta>
+      <Resposta>O sistema oferece gestão financeira completa com: controle de contas a pagar e receber, fluxo de caixa, relatórios gerenciais e controle de comissões.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como o sistema gerencia as finanças da drogaria?</Variacao>
+        <Variacao>Recursos financeiros para drogaria</Variacao>
+        <Variacao>Controle de fluxo de caixa</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>drogaria</Tag>
+        <Tag>financeiro</Tag>
+        <Tag>contas a pagar</Tag>
+        <Tag>contas a receber</Tag>
+        <Tag>fluxo de caixa</Tag>
+        <Tag>relatórios</Tag>
+        <Tag>comissões</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="65">
+      <Pergunta>Quais são os benefícios do sistema para minha drogaria?</Pergunta>
+      <Resposta>Os principais benefícios incluem: aumento da produtividade, controle total do negócio, conformidade sanitária, gestão eficiente de estoque e relatórios gerenciais completos.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Vantagens do sistema para drogaria</Variacao>
+        <Variacao>O que o sistema faz pela minha drogaria?</Variacao>
+        <Variacao>Por que usar o sistema na drogaria?</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>drogaria</Tag>
+        <Tag>benefícios</Tag>
+        <Tag>produtividade</Tag>
+        <Tag>controle</Tag>
+        <Tag>conformidade sanitária</Tag>
+        <Tag>estoque</Tag>
+        <Tag>relatórios</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="66">
+      <Pergunta>O que é o programa para loja de cortinas da SOFTClass?</Pergunta>
+      <Resposta>O programa para loja de cortinas da SOFTClass é uma solução completa desenvolvida para otimizar a gestão e impulsionar os resultados de lojas de cortinas, oferecendo recursos exclusivos para gestão de projetos, estoque e instalações.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Qual o software para loja de cortinas?</Variacao>
+        <Variacao>Para que serve o programa de cortinas?</Variacao>
+        <Variacao>Solução de gestão para cortinarias</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>cortinas</Tag>
+        <Tag>loja</Tag>
+        <Tag>programa</Tag>
+        <Tag>sistema</Tag>
+        <Tag>software</Tag>
+        <Tag>gestão</Tag>
+        <Tag>SOFTClass</Tag>
+        <Tag>projetos</Tag>
+        <Tag>estoque</Tag>
+        <Tag>instalações</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="67">
+      <Pergunta>Como o programa para loja de cortinas gerencia projetos e estoque?</Pergunta>
+      <Resposta>Com o programa para loja de cortinas, você ganha total controle sobre seus projetos e estoque, incluindo gestão de estoque de tecidos e acessórios, controle de medidas e orçamentos, controle de fornecedores e gestão de clientes.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como o sistema ajuda no estoque de cortinas?</Variacao>
+        <Variacao>Controle de projetos de cortinas</Variacao>
+        <Variacao>Gestão de tecidos e acessórios</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>cortinas</Tag>
+        <Tag>projetos</Tag>
+        <Tag>estoque</Tag>
+        <Tag>tecidos</Tag>
+        <Tag>acessórios</Tag>
+        <Tag>medidas</Tag>
+        <Tag>orçamentos</Tag>
+        <Tag>fornecedores</Tag>
+        <Tag>clientes</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="68">
+      <Pergunta>Quais recursos o programa para loja de cortinas oferece para catálogo digital e produtos?</Pergunta>
+      <Resposta>O programa para loja de cortinas oferece recursos exclusivos para gestão de produtos, como catálogo digital de tecidos e modelos, gestão de amostras e cores, controle de preços e margens, gestão de promoções, controle de estoque mínimo e gestão de marcas e fornecedores.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como criar catálogo de cortinas no sistema?</Variacao>
+        <Variacao>Gestão de produtos para cortinaria</Variacao>
+        <Variacao>Controle de preços de cortinas</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>cortinas</Tag>
+        <Tag>catálogo digital</Tag>
+        <Tag>produtos</Tag>
+        <Tag>tecidos</Tag>
+        <Tag>modelos</Tag>
+        <Tag>amostras</Tag>
+        <Tag>cores</Tag>
+        <Tag>preços</Tag>
+        <Tag>promoções</Tag>
+        <Tag>estoque mínimo</Tag>
+        <Tag>marcas</Tag>
+        <Tag>fornecedores</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="69">
+      <Pergunta>Como o programa para loja de cortinas melhora o atendimento e a fidelização de clientes?</Pergunta>
+      <Resposta>O programa para loja de cortinas oferece ferramentas para melhorar o relacionamento com clientes, incluindo cadastro completo de clientes, histórico de clientes, preferências de tecidos, programa de fidelidade, gestão de orçamentos e controle de atendimentos.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Como fidelizar clientes na loja de cortinas?</Variacao>
+        <Variacao>Gestão de clientes para cortinaria</Variacao>
+        <Variacao>Atendimento ao cliente no sistema</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>cortinas</Tag>
+        <Tag>atendimento</Tag>
+        <Tag>fidelização</Tag>
+        <Tag>clientes</Tag>
+        <Tag>histórico</Tag>
+        <Tag>preferências</Tag>
+        <Tag>programa de fidelidade</Tag>
+        <Tag>orçamentos</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="70">
+      <Pergunta>Quais relatórios e insights o programa para loja de cortinas oferece?</Pergunta>
+      <Resposta>O programa para loja de cortinas fornece informações valiosas para decisões estratégicas, como relatórios de vendas detalhados, análise de produtos mais vendidos, controle de sazonalidade, gestão de margens e lucros, relatórios gerenciais e dashboard personalizado.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Relatórios de vendas para loja de cortinas</Variacao>
+        <Variacao>Análise de desempenho de cortinaria</Variacao>
+        <Variacao>Dashboard de gestão para cortinas</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>cortinas</Tag>
+        <Tag>relatórios</Tag>
+        <Tag>insights</Tag>
+        <Tag>vendas</Tag>
+        <Tag>produtos mais vendidos</Tag>
+        <Tag>sazonalidade</Tag>
+        <Tag>margens</Tag>
+        <Tag>lucros</Tag>
+        <Tag>gerenciais</Tag>
+        <Tag>dashboard</Tag>
+      </Tags>
+    </FAQ>
+    <FAQ id="71">
+      <Pergunta>Por que escolher o programa para loja de cortinas da SOFTClass?</Pergunta>
+      <Resposta>O programa para loja de cortinas da SOFTClass é a escolha certa devido à sua interface moderna e intuitiva, suporte técnico especializado, atualizações constantes, backup em nuvem automático, treinamento completo da equipe e implementação rápida e eficiente.</Resposta>
+      <Categoria>Product Info</Categoria>
+      <Audiencia>End-User</Audiencia>
+      <ConfiancaScore>1.0</ConfiancaScore>
+      <VariacoesSinteticas>
+        <Variacao>Quais as vantagens do programa para loja de cortinas?</Variacao>
+        <Variacao>Diferenciais do software para cortinaria</Variacao>
+        <Variacao>Benefícios do programa SOFTClass cortinas</Variacao>
+      </VariacoesSinteticas>
+      <Tags>
+        <Tag>cortinas</Tag>
+        <Tag>escolha</Tag>
+        <Tag>vantagens</Tag>
+        <Tag>interface</Tag>
+        <Tag>suporte</Tag>
+        <Tag>atualizações</Tag>
+        <Tag>backup</Tag>
+        <Tag>treinamento</Tag>
+        <Tag>implementação</Tag>
+      </Tags>
+    </FAQ>
+  </FAQs>
+</IngestaoFAQ>
